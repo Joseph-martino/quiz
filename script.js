@@ -22,6 +22,7 @@ function cleanInputField(){
 
 function initGame(){
     gameOver = false;
+    userInput.focus();
     scoreService.initializeScore();
     timerService.initializeNumberOfSecond();
     timerService.timer();
@@ -40,6 +41,7 @@ function checkUserAnswer(){
         scoreService.displayScore();
         loadRandomPicture(randomNumber);
         cleanInputField();
+        userInput.focus();
     } else {
         userInput.style.border = "solid 3px red";
     }
@@ -55,4 +57,5 @@ function skip(){
     scoreService.getMedal(userScore);
     loadRandomPicture(randomNumber);
     cleanInputField();
+    userInput.focus();
 }

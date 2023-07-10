@@ -38,7 +38,7 @@ class TimerService {
     // }
     
     hideTimerInfo(){
-        timerInfo.style.display = "none";
+        timerInfo.innerText ="";
     }
     
     addTimeToTimer(){

@@ -38,6 +38,7 @@ function checkUserAnswer(){
         scoreService.addPointToScore();
         scoreService.getMedal(userScore);
         scoreService.displayScore();
+        removeClue();
         loadRandomPicture(randomNumber);
         cleanInputField();
         userInput.focus();
@@ -52,7 +53,16 @@ function skip(){
     scoreService.soustractPointToScore();
     scoreService.getMedal(userScore);
     scoreService.displayScore();
+    removeClue();
     loadRandomPicture(randomNumber);
     cleanInputField();
     userInput.focus();
+}
+
+function showClue(){
+    clueContent.innerHTML = games[randomNumber].clue;
+}
+
+function removeClue(){
+    clueContent.innerHTML ="";
 }

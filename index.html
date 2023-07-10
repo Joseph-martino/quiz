@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="data.js" defer></script>
+    <script src="utils.js" defer></script>
+    <script src="ScoreService.js" defer></script>
+    <script src="TimerService.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="Main.js" defer></script>
 </head>
 <body>
+    <div class="timer-container">
+        <h2 id="timer"></h2>
+        <h2 id="timer-info"></h2>
+    </div>
     <div class="score-container">
-        <h1 id="score"></h1>
+        <h2>Score</h2>
+        <h2 id="score"></h2>
         <h2 id="medal"></h2>
         <img id="medal-picture" src="" alt="medal-icon">
     </div>
@@ -23,6 +33,10 @@
             <button id="validation-button">Valider</button>
             <button id="skip-button">Passer</button>
         </div>
+    </div>
+
+    <div id="game-over-container">
+        <h3 id="game-over">Game Over</h3>
     </div>
     
 </body>

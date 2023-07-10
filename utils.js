@@ -1,0 +1,17 @@
+let userScore;
+let gameOver;
+let isrightAnswer;
+let numberOfSeconds;
+const imageFolder = "images/";
+const iconFolder = "icons/";
+const gameOverDisplay = document.getElementById("game-over-container");
+const scoreDisplay = document.getElementById("score");
+const medalIcon = document.getElementById("medal-picture");
+const timerDisplay = document.getElementById("timer");
+const timerInfo = document.getElementById("timer-info");
+let medal = document.getElementById("medal");
+const userInput = document.getElementById("user-input");
+const validationbutton = document.getElementById("validation-button");
+const skipButton = document.getElementById("skip-button");
+let picture = document.getElementById("image");
+let randomNumber = Math.floor(Math.random() * games.length); 

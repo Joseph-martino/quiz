@@ -35,7 +35,6 @@ function checkUserAnswer(){
     if(userInput.value.toLowerCase() == games[randomNumber].title){
         randomNumber = Math.floor(Math.random() * games.length);
         timerService.addTimeToTimer();
-        //timerService.displayAddOrRemovePointsToTimer(true);
         scoreService.addPointToScore();
         scoreService.getMedal(userScore);
         scoreService.displayScore();
@@ -49,12 +48,10 @@ function checkUserAnswer(){
 
 function skip(){
     randomNumber = Math.floor(Math.random() * games.length); 
-    timerServicedecreaseTimeToTimer();
-    timerService.displayAddOrRemovePointsToTimer(false);
-    timerService.displayTimer(rightAnswer);
+    timerService.decreaseTimeToTimer();
     scoreService.soustractPointToScore();
-    scoreService.displayScore();
     scoreService.getMedal(userScore);
+    scoreService.displayScore();
     loadRandomPicture(randomNumber);
     cleanInputField();
     userInput.focus();

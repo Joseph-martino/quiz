@@ -45,7 +45,6 @@ class TimerService {
         numberOfSeconds = this.getCurrentTimer();
         numberOfSeconds += 5;
         this.displayTimer(numberOfSeconds);
-        //console.log(numberOfSeconds);
         timerInfo.innerText = "+" + 5;
         setTimeout(this.hideTimerInfo, 1000);
     }
@@ -53,9 +52,9 @@ class TimerService {
     decreaseTimeToTimer(){
         numberOfSeconds = this.getCurrentTimer();
         numberOfSeconds -= 5;
-        console.log(numberOfSeconds);
-        timerInfo.innerText = "-" + 5;
         this.displayTimer(numberOfSeconds);
+        timerInfo.innerText = "-" + 5;
+        setTimeout(this.hideTimerInfo, 1000);
     }
 }
 

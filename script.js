@@ -1,14 +1,8 @@
 let scoreService = new ScoreService();
 let timerService = new TimerService();
 
-function setEndgame(isEnded){
-    isEnded = true;
-}
-
-function displayGameOver(){
-    if(gameOver){
-        gameOverDisplay.style.display = "block";
-    }
+function reloadGame() {
+    window.location.reload();
 }
 
 function loadRandomPicture(number){

@@ -3,9 +3,18 @@ class ScoreService {
     initializeScore(){
         userScore = 0;
     }
+
+    getCurrentScore(){
+        let currentScore = parseInt(scoreDisplay.innerText);
+        return currentScore;
+    }
     
     displayScore(){
         scoreDisplay.innerHTML = userScore;
+    }
+
+    displayFinalScore(score){
+        endGameScore.innerHTML = score;
     }
     
     addPointToScore(){

@@ -8,40 +8,48 @@
     <script src="data.js" defer></script>
     <script src="utils.js" defer></script>
     <script src="ScoreService.js" defer></script>
+    <script src="RewardService.js" defer></script>
+    <script src="GameOverService.js" defer></script>
     <script src="TimerService.js" defer></script>
     <script src="script.js" defer></script>
     <script src="Main.js" defer></script>
 </head>
 <body>
-    <div class="timer-container">
-        <h2 id="timer"></h2>
-        <h2 id="timer-info"></h2>
-    </div>
-    <div class="score-container">
-        <h2>Score</h2>
-        <h2 id="score"></h2>
-        <h2 id="medal"></h2>
-        <img id="medal-picture" src="" alt="medal-icon">
-    </div>
-    <div class="main-container">
-        <div class="picture-container">
-            <img id="image" src="" alt="est">
-        </div>
 
-        <div class="answer-container">
-            <input id="user-input" type="text">
-            <button id="validation-button">Valider</button>
-            <button id="skip-button">Passer</button>
-            <button id="clue">Indice</button>
+    <div id="game-container">
+        <div class="timer-container">
+            <h2 id="timer"></h2>
+            <h2 id="timer-info"></h2>
         </div>
-
-        <div class="clue-content-container">
-            <p id="clue-content"></p>
+        <div class="score-container">
+            <h2>Score</h2>
+            <h2 id="score"></h2>
+            <h2 id="medal"></h2>
+            <img id="medal-picture" src="" alt="medal-icon">
+        </div>
+        <div class="main-container">
+            <div class="picture-container">
+                <img id="image" src="" alt="est">
+            </div>
+    
+            <div class="answer-container">
+                <input id="user-input" type="text">
+                <button id="validation-button">Valider</button>
+                <button id="skip-button">Passer</button>
+                <button id="clue">Indice</button>
+            </div>
+    
+            <div class="clue-content-container">
+                <p id="clue-content"></p>
+            </div>
         </div>
     </div>
 
     <div id="game-over-container">
         <h3 id="game-over">Game Over</h3>
+        <p id="reward-message"></p>
+        <p>Score: <span id="end-game-score"></span></p>
+        <button id="restart-game">Recommencer</button>
     </div>
     
 </body>

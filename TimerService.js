@@ -1,5 +1,9 @@
 class TimerService {
 
+    rewardService = new RewardService();
+    scoreService = new ScoreService();
+    gameOverService = new GameOverService();
+
     initializeNumberOfSecond(){
         numberOfSeconds = 30;
     }
@@ -10,32 +14,23 @@ class TimerService {
 
     getCurrentTimer(){
         let currentNumbrOfSeconds = parseInt(timerDisplay.innerText);
-        console.log(currentNumbrOfSeconds);
-        console.log(typeof(currentNumbrOfSeconds));
         return currentNumbrOfSeconds;
     }
     
     timer(){
         window.setInterval(() => {
-        //let number = this.getCurrentTimer();
         numberOfSeconds--
         if(numberOfSeconds < 0){
-            setEndgame(gameOver);
+            this.gameOverService.setEndgame(this.gameOver);
             numberOfSeconds = 0;
+            this.gameOverService.displayGameOver(this.gameOver);
+            let playerFinalScore = this.scoreService.getCurrentScore();
+            this.scoreService.displayFinalScore(playerFinalScore);
+            this.rewardService.getReward(playerFinalScore);
         }
         this.displayTimer(numberOfSeconds)} 
         , 1000);
     }
-    
-    // displayAddOrRemovePointsToTimer(answer){
-    //     if(answer){
-    //         timerInfo.innerText = "+" + 5;
-    //         setTimeout(hideTimerInfo,1000);
-    //     } else {
-    //         timerInfo.innerText = "-" + 5;
-    //         setTimeout(hideTimerInfo,1000);
-    //     }
-    // }
     
     hideTimerInfo(){
         timerInfo.innerText ="";

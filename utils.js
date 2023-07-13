@@ -20,3 +20,9 @@ const restartButton = document.getElementById("restart-game");
 let picture = document.getElementById("image");
 let randomNumber = Math.floor(Math.random() * games.length); 
 const endGameScore= document.getElementById("end-game-score");
+const StartButton = document.getElementById("start-button");
+const tileScreen = document.getElementById("title-screen");
+let player = {
+    name:"",
+    score:""
+}

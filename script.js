@@ -25,6 +25,12 @@ function initGame(){
     loadRandomPicture(randomNumber);
 }
 
+function launchGame(){
+    tileScreen.style.display = "none";
+    gameView.style.display = "block";
+    initGame();
+}
+
 function checkUserAnswer(){
     if(userInput.value.toLowerCase() == games[randomNumber].title){
         randomNumber = Math.floor(Math.random() * games.length);

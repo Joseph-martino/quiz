@@ -26,6 +26,7 @@ class TimerService {
             this.gameOverService.displayGameOver(this.gameOver);
             let playerFinalScore = this.scoreService.getCurrentScore();
             this.scoreService.displayFinalScore(playerFinalScore);
+            this.gameOverService.setScoreToPlayer(playerFinalScore);
             this.rewardService.getReward(playerFinalScore);
         }
         this.displayTimer(numberOfSeconds)} 

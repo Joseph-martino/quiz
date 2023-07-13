@@ -6,3 +6,7 @@
 #game-over-container {
     display: none;
 }
+
+#game-container {
+    display: none;
+}

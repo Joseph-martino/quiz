@@ -15,4 +15,9 @@ class GameOverService {
         }
     }
 
+    setScoreToPlayer(score){
+        player.score = score;
+        console.log(player + "le score est: " + player.score);
+    }
+
 }

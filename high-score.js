@@ -1,0 +1,22 @@
+let highScore = [
+    {
+        name:"Toto",
+        score:50
+    },
+    {
+        name:"Yaya",
+        score:70
+    },
+    {
+        name:"Yoyo",
+        score:60
+    },
+    {
+        name:"Tutu",
+        score:80
+    },
+    {
+        name:"Tata",
+        score:40
+    }
+];

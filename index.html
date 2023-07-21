@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="data.js" defer></script>
+    <script src="high-score.js" defer></script>
     <script src="utils.js" defer></script>
     <script src="ScoreService.js" defer></script>
     <script src="RewardService.js" defer></script>
@@ -54,6 +55,20 @@
         <h3 id="game-over">Game Over</h3>
         <p id="reward-message"></p>
         <p>Score: <span id="end-game-score"></span></p>
+        <div id="high-score-container">
+            <div id="score1"></div>
+            <div id="score2"></div>
+            <div id="score3"></div>
+            <div id="score4"></div>
+            <div id="score5"></div>
+
+        </div>
+        <div id="player-new-username-container">
+            <h3>NOUVEAU RECORD</h3>
+            <p>Entre ton pseudo</p>
+            <input id="user-name" type="text">
+            <button id="user-confirmation-button">OK</button>
+        </div>
         <button id="restart-game">Recommencer</button>
     </div>
     

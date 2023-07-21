@@ -1,5 +1,6 @@
 let scoreService = new ScoreService();
 let timerService = new TimerService();
+let gameOverService = new GameOverService();
 
 function reloadGame() {
     window.location.reload();

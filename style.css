@@ -10,3 +10,7 @@
 #game-container {
     display: none;
 }
+
+#player-new-username-container{
+    display: none;
+}

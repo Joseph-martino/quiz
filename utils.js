@@ -21,7 +21,17 @@ let picture = document.getElementById("image");
 let randomNumber = Math.floor(Math.random() * games.length); 
 const endGameScore= document.getElementById("end-game-score");
 const StartButton = document.getElementById("start-button");
+const hightScoreContainer = document.getElementById("high-score-container");
+const playerNewUsernameBox = document.getElementById("player-new-username-container");
+const userNameInput = document.getElementById("user-name");
+const userConfirmationButton = document.getElementById("user-confirmation-button");
 const tileScreen = document.getElementById("title-screen");
+const score1 = document.getElementById("score1");
+const score2 = document.getElementById("score2");
+const score3 = document.getElementById("score3");
+const score4 = document.getElementById("score4");
+const score5 = document.getElementById("score5");
+
 let player = {
     name:"",
     score:""

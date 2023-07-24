@@ -31,6 +31,7 @@ const score2 = document.getElementById("score2");
 const score3 = document.getElementById("score3");
 const score4 = document.getElementById("score4");
 const score5 = document.getElementById("score5");
+const goodAnswerSound = document.getElementById("good-answer-sound");
 
 let player = {
     name:"",

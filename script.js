@@ -34,6 +34,7 @@ function launchGame(){
 
 function checkUserAnswer(){
     if(userInput.value.toLowerCase() == games[randomNumber].title){
+        goodAnswerSound.play();
         randomNumber = Math.floor(Math.random() * games.length);
         timerService.addTimeToTimer();
         scoreService.addPointToScore();

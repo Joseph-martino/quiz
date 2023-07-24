@@ -18,6 +18,13 @@
 <body>
     <div id="title-screen">
         <h1>Super Quiz</h1>
+        <h2>Règle du jeu</h2>
+        <p>Trouvez simplement le nom du jeu et appuyer sur le bouton A. 
+            Pour passer, appuyez sur le bouton B. Trouvez le maximum de 
+            jeu pour marquer le plus de points possible avant la fin du 
+            temps imparti. Attention, vous devez être précis dans le choix 
+            des noms. Exemple: Mario Bros est différent de Super Mario Bros
+        </p>
         <button id="start-button">Commencer</button>
     </div>
 
@@ -41,6 +48,7 @@
             <div class="answer-container">
                 <input id="user-input" type="text">
                 <button id="validation-button">Valider</button>
+                <audio id="good-answer-sound" src="sounds/TunePocket-Power-Up-Retro-Game-Sound-1-Preview.mp3"></audio>
                 <button id="skip-button">Passer</button>
                 <button id="clue">Indice</button>
             </div>

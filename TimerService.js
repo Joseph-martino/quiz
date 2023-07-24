@@ -40,6 +40,9 @@ class TimerService {
     addTimeToTimer(){
         numberOfSeconds = this.getCurrentTimer();
         numberOfSeconds += 5;
+        if(numberOfSeconds > 60){
+            numberOfSeconds = 60;
+        }
         this.displayTimer(numberOfSeconds);
         timerInfo.innerText = "+" + 5;
         setTimeout(this.hideTimerInfo, 1000);

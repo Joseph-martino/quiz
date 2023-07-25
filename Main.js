@@ -1,5 +1,3 @@
-//let gameOverService = new GameOverService();
-
 StartButton.addEventListener('click',launchGame);
 validationbutton.addEventListener('click', checkUserAnswer);
 userInput.addEventListener('keypress', function(event){

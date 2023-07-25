@@ -14,3 +14,7 @@
 #player-new-username-container{
     display: none;
 }
+
+#level {
+    display: none;
+}

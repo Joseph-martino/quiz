@@ -1,5 +1,6 @@
 let scoreService = new ScoreService();
 let timerService = new TimerService();
+let levelService = new LevelService();
 let gameOverService = new GameOverService();
 
 function reloadGame() {
@@ -19,6 +20,9 @@ function initGame(){
     gameOver = false;
     userInput.focus();
     scoreService.initializeScore();
+    levelService.initializeLevel();
+    levelService.displayLevel();
+    levelService.hideLevel();
     timerService.initializeNumberOfSecond();
     timerService.timer();
     scoreService.displayScore();
@@ -38,6 +42,8 @@ function checkUserAnswer(){
         randomNumber = Math.floor(Math.random() * games.length);
         timerService.addTimeToTimer();
         scoreService.addPointToScore();
+        levelService.displayLevel();
+        levelService.hideLevel();
         scoreService.getMedal(userScore);
         scoreService.displayScore();
         removeClue();

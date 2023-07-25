@@ -34,7 +34,6 @@ const score5 = document.getElementById("score5");
 const goodAnswerSound = document.getElementById("good-answer-sound");
 const levelDisplay = document.getElementById("level");
 let level;
-
 let player = {
     name:"",
     score:""

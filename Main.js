@@ -1,3 +1,6 @@
+//let gameOverService = new gameOverService();
+//let timeStopPowerUp = new TimeStopPowerUp();
+
 StartButton.addEventListener('click',launchGame);
 validationbutton.addEventListener('click', checkUserAnswer);
 userInput.addEventListener('keypress', function(event){
@@ -12,3 +15,6 @@ restartButton.addEventListener('click', reloadGame);
 userConfirmationButton.addEventListener('click', function(){
     gameOverService.setPlayerName()
 },false);
+timeStopButton.addEventListener('click', function(){
+    timeStopPowerUpService.useTimeStop();
+});

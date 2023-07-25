@@ -26,7 +26,7 @@ class TimerService {
             this.stopTimer(timer);
         }
         this.displayTimer(numberOfSeconds)} 
-        , 1000);
+        , timerInterval);
     }
 
     stopTimer(timer) {

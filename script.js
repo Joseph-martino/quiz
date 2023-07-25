@@ -2,6 +2,7 @@ let scoreService = new ScoreService();
 let timerService = new TimerService();
 let levelService = new LevelService();
 let gameOverService = new GameOverService();
+let timeStopPowerUpService = new TimeStopPowerUpService();
 
 function reloadGame() {
     window.location.reload();
@@ -18,6 +19,7 @@ function cleanInputField(){
 
 function initGame(){
     gameOver = false;
+    timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
     userInput.focus();
     scoreService.initializeScore();
     levelService.initializeLevel();

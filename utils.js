@@ -1,6 +1,7 @@
 let userScore;
 let gameOver;
 let numberOfSeconds;
+let timerInterval = 1000;
 const imageFolder = "images/";
 const iconFolder = "icons/";
 const scoreDisplay = document.getElementById("score");
@@ -33,8 +34,16 @@ const score4 = document.getElementById("score4");
 const score5 = document.getElementById("score5");
 const goodAnswerSound = document.getElementById("good-answer-sound");
 const levelDisplay = document.getElementById("level");
+const timeStopButton = document.getElementById("time-stop-power-button");
+const timeStopPowerUp = document.getElementById("time-stop-power");
 let level;
 let player = {
     name:"",
-    score:""
+    score:"",
+    powerUps: [
+        {
+            name: "Time Stop",
+            quantity: 2
+        }
+    ]
 }

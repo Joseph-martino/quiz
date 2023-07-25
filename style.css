@@ -3,6 +3,10 @@
     height: auto;
 }
 
+.powerup-icon {
+    width: 30px;
+}
+
 #medal-picture {
     width: 30px;
     display: none;

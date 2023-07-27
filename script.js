@@ -19,6 +19,7 @@ function cleanInputField(){
 
 function initGame(){
     gameOver = false;
+    consecutiveAnswers = 0;
     timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
     userInput.focus();
     scoreService.initializeScore();
@@ -42,6 +43,8 @@ function checkUserAnswer(){
     if(userInput.value.toLowerCase() == games[randomNumber].title){
         goodAnswerSound.play();
         randomNumber = Math.floor(Math.random() * games.length);
+        consecutiveAnswers++;
+        timeStopPowerUpService.getTimeStopPowerUp(consecutiveAnswers);
         timerService.addTimeToTimer();
         scoreService.addPointToScore();
         levelService.displayLevel();
@@ -59,6 +62,7 @@ function checkUserAnswer(){
 
 function skip(){
     randomNumber = Math.floor(Math.random() * games.length); 
+    consecutiveAnswers = 0;
     timerService.decreaseTimeToTimer();
     scoreService.soustractPointToScore();
     scoreService.getMedal(userScore);

@@ -22,8 +22,10 @@ class JokerPowerUpService {
 
     getJokerPowerUp(score){
         if(score != 0 && score %3 === 0){
-            player.powerUps[1].quantity = player.powerUps[1].quantity + 1;
-            this.displayJokerPowerUpQuantity();
+            if(player.powerUps[1].quantity < 3){
+                player.powerUps[1].quantity = player.powerUps[1].quantity + 1;
+                this.displayJokerPowerUpQuantity();
+            }
         }
     }
 

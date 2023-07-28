@@ -4,6 +4,7 @@ let levelService = new LevelService();
 let gameOverService = new GameOverService();
 let timeStopPowerUpService = new TimeStopPowerUpService();
 let jokerPowerUpService = new JokerPowerUpService();
+let cluePowerUpService = new CluePowerUpService();
 
 function reloadGame() {
     window.location.reload();
@@ -23,6 +24,7 @@ function initGame(){
     consecutiveAnswers = 0;
     timeStopPowerUpService.displayTimeStopPowerUpQuantity();
     jokerPowerUpService.displayJokerPowerUpQuantity();
+    cluePowerUpService.displayCluePowerUpQuantity();
     userInput.focus();
     scoreService.initializeScore();
     levelService.initializeLevel();
@@ -55,6 +57,7 @@ function checkUserAnswer(){
         scoreService.displayScore();
         currentScore = scoreService.getCurrentScore();
         jokerPowerUpService.getJokerPowerUp(currentScore);
+        cluePowerUpService.getCluePowerUp(currentScore);
         removeClue();
         loadRandomPicture(randomNumber);
         cleanInputField();

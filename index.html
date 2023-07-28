@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="data.js" defer></script>
-    <script src="high-score.js" defer></script>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="data/data.js" defer></script>
+    <script src="data/high-score.js" defer></script>
     <script src="utils.js" defer></script>
-    <script src="TimeStopPowerUpService.js" defer></script>
-    <script src="JokerPowerUpService.js" defer></script>
-    <script src="LevelService.js" defer></script>
-    <script src="ScoreService.js" defer></script>
-    <script src="RewardService.js" defer></script>
-    <script src="GameOverService.js" defer></script>
-    <script src="TimerService.js" defer></script>
+    <script src="services/powerUpServices/TimeStopPowerUpService.js" defer></script>
+    <script src="services/powerUpServices/JokerPowerUpService.js" defer></script>
+    <script src="services/powerUpServices/CluePowerUpService.js" defer></script>
+    <script src="services/LevelService.js" defer></script>
+    <script src="services/ScoreService.js" defer></script>
+    <script src="services/RewardService.js" defer></script>
+    <script src="services/GameOverService.js" defer></script>
+    <script src="services/TimerService.js" defer></script>
     <script src="script.js" defer></script>
     <script src="Main.js" defer></script>
 </head>
@@ -54,6 +55,11 @@
             <button id="joker-power-button">
                 <img class="powerup-icon" src="images/icons/joker.png" alt="joker icon">
                 <span id="joker-power"></span>
+            </button>
+
+            <button id="clue-power-button">
+                <img class="powerup-icon" src="images/icons/clue.png" alt="clue icon">
+                <span id="clue-power"></span>
             </button>
         </div>
         <div class="main-container">

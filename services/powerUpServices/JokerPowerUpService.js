@@ -34,7 +34,7 @@ class JokerPowerUpService {
             } else {
                 jokerButton.style.border = "solid 2px red";
                 //faire disparaitre les border rouges apres un certains temps;
-                removeRedBorders();
+                this.removeRedBorders();
                 powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
             }

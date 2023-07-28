@@ -10,7 +10,7 @@ const scoreDisplay = document.getElementById("score");
 const medalIcon = document.getElementById("medal-picture");
 const timerDisplay = document.getElementById("timer");
 const timerInfo = document.getElementById("timer-info");
-const clueButton = document.getElementById("clue");
+const clueButtonTest = document.getElementById("clue");
 const clueContent = document.getElementById("clue-content");
 const gameView = document.getElementById("game-container");
 const gameOverView = document.getElementById("game-over-container");
@@ -40,6 +40,8 @@ const timeStopButton = document.getElementById("time-stop-power-button");
 const timeStopPowerUp = document.getElementById("time-stop-power");
 const jokerButton = document.getElementById("joker-power-button");
 const jokerPowerUp = document.getElementById("joker-power");
+const clueButton = document.getElementById("clue-power-button");
+const cluePowerUp = document.getElementById("clue-power");
 const powerUpInfo = document.getElementById("power-up-info");
 let level;
 let player = {
@@ -53,6 +55,11 @@ let player = {
 
         {
             name: "Joker",
+            quantity: 0
+        },
+
+        {
+            name: "Clue",
             quantity: 0
         }
     ]

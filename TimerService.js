@@ -28,7 +28,7 @@ class TimerService {
         this.displayTimer(numberOfSeconds)} 
         , timerInterval);
     }
-
+    
     stopTimer(timer) {
         clearInterval(timer);
     }

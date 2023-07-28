@@ -9,12 +9,18 @@ userInput.addEventListener('keypress', function(event){
         validationbutton.click();
     }
 });
+
 skipButton.addEventListener('click', skip);
 clueButton.addEventListener('click', showClue);
 restartButton.addEventListener('click', reloadGame);
 userConfirmationButton.addEventListener('click', function(){
     gameOverService.setPlayerName()
 },false);
+
 timeStopButton.addEventListener('click', function(){
     timeStopPowerUpService.useTimeStop();
+});
+
+jokerButton.addEventListener('click', function(){
+    jokerPowerUpService.getRightAnswer();
 });

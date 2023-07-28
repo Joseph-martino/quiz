@@ -3,6 +3,7 @@ let timerService = new TimerService();
 let levelService = new LevelService();
 let gameOverService = new GameOverService();
 let timeStopPowerUpService = new TimeStopPowerUpService();
+let jokerPowerUpService = new JokerPowerUpService();
 
 function reloadGame() {
     window.location.reload();
@@ -20,7 +21,8 @@ function cleanInputField(){
 function initGame(){
     gameOver = false;
     consecutiveAnswers = 0;
-    timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
+    timeStopPowerUpService.displayTimeStopPowerUpQuantity();
+    jokerPowerUpService.displayJokerPowerUpQuantity();
     userInput.focus();
     scoreService.initializeScore();
     levelService.initializeLevel();
@@ -51,6 +53,8 @@ function checkUserAnswer(){
         levelService.hideLevel();
         scoreService.getMedal(userScore);
         scoreService.displayScore();
+        currentScore = scoreService.getCurrentScore();
+        jokerPowerUpService.getJokerPowerUp(currentScore);
         removeClue();
         loadRandomPicture(randomNumber);
         cleanInputField();

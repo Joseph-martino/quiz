@@ -1,11 +1,20 @@
 class TimeStopPowerUpService {
 
+    isUsed = false;
+
     timerService = new TimerService();
 
     getTimeStopPowerUp(number){
         if(number %7 === 0){
-            player.powerUps[0].quantity = player.powerUps[0].quantity + 1;
-            this.displayTimeStopPowerUpQuantity();
+            if(player.powerUps[0].quantity < 2){
+                player.powerUps[0].quantity = player.powerUps[0].quantity + 1;
+                this.displayTimeStopPowerUpQuantity();
+            } else {
+                clueButton.style.border = "solid 2px red";
+                //faire disparaitre les border rouges apres un certains temps;
+                powerUpInfo.innerHTML = "Quantité maximale atteinte";
+                this.hideInfo();
+            }
         }
     }
 
@@ -29,9 +38,18 @@ class TimeStopPowerUpService {
     }
     useTimeStop(){
         if(player.powerUps[0].quantity > 0){
-            this.addTimeToTimer();
-            player.powerUps[0].quantity--;
-            this.displayTimeStopPowerUpQuantity();
+            if(this.isUsed === false){
+                this.addTimeToTimer();
+                player.powerUps[0].quantity--;
+                this.displayTimeStopPowerUpQuantity();
+                this.isUsed = true;
+                setTimeout(() => {
+                    this.isUsed = false;
+                }, 5000);
+            } else {
+                powerUpInfo.innerHTML = "Temps de recharge";
+                this.hideInfo();
+            } 
         } else {
             powerUpInfo.innerHTML = "Pas assez de pouvoir";
             this.hideInfo();

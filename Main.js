@@ -11,7 +11,7 @@ userInput.addEventListener('keypress', function(event){
 });
 
 skipButton.addEventListener('click', skip);
-clueButtonTest.addEventListener('click', showClue);
+//clueButtonTest.addEventListener('click', showClue);
 restartButton.addEventListener('click', reloadGame);
 userConfirmationButton.addEventListener('click', function(){
     gameOverService.setPlayerName()

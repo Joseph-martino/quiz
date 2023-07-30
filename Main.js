@@ -27,4 +27,4 @@ jokerButton.addEventListener('click', function(){
 
 clueButton.addEventListener('click', function(){
     cluePowerUpService.displayClue();
-})
+});

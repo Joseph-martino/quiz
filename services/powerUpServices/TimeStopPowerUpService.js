@@ -45,7 +45,7 @@ class TimeStopPowerUpService {
                 this.isUsed = true;
                 setTimeout(() => {
                     this.isUsed = false;
-                }, 5000);
+                }, 10000);
             } else {
                 powerUpInfo.innerHTML = "Temps de recharge";
                 this.hideInfo();

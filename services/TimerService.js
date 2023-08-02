@@ -4,8 +4,12 @@ class TimerService {
     scoreService = new ScoreService();
     gameOverService = new GameOverService();
     timerDelay;
-    test = 30;
     interval;
+    self
+
+    constructor(){
+        self = this;
+    }
 
     initializeNumberOfSecond(){
         numberOfSeconds = 30;
@@ -26,28 +30,31 @@ class TimerService {
 
     addContentToTimer(){
         numberOfSeconds--;
-        this.displayTimer(numberOfSeconds);
+        self.displayTimer(numberOfSeconds);
+    }
+
+    checkScore(score){
+        if(score >= 0 && score <= 20){
+            self.changeTimer(1500);
+        } else if(score >20 && score <= 40){
+            self.changeTimer(1000);
+        } else if(score > 40){
+            self.changeTimer(700);
+        }
     }
     
     timer(){
         clearInterval(this.interval);
-        this.addContentToTimer();
-        let score = this.scoreService.getCurrentScore();
-        if(score >= 0 && score <= 20){
-            console.log("lent");
-            this.changeTimer(1500);
-        } else if(score >20 && score <= 40){
-            console.log("moyen");
-            this.changeTimer(1000);
-        } else if(score > 40){
-            console.log("rapide");
-            this.changeTimer(700);
-        }
-        this.interval = window.setInterval(this.timer, this.timerDelay);
+        self.addContentToTimer();
         if(numberOfSeconds <= 0){
+            self.gameOverService.setEndgame();
             numberOfSeconds = 0;
-            clearInterval(this.interval);
+            clearInterval(self.interval);
         }
+        let score = self.scoreService.getCurrentScore();
+        self.checkScore(score);
+        this.interval = window.setInterval(self.timer, self.timerDelay);
+        
 
         // const timer = window.setInterval(() => {
         // numberOfSeconds--
@@ -69,22 +76,22 @@ class TimerService {
     }
     
     addTimeToTimer(){
-        numberOfSeconds = this.getCurrentTimer();
+        numberOfSeconds = self.getCurrentTimer();
         numberOfSeconds += 5;
         if(numberOfSeconds > 60){
             numberOfSeconds = 60;
         }
-        this.displayTimer(numberOfSeconds);
+        self.displayTimer(numberOfSeconds);
         timerInfo.innerText = "+" + 5;
-        setTimeout(this.hideTimerInfo, 1000);
+        setTimeout(self.hideTimerInfo, 1000);
     }
     
     decreaseTimeToTimer(){
-        numberOfSeconds = this.getCurrentTimer();
+        numberOfSeconds = self.getCurrentTimer();
         numberOfSeconds -= 5;
-        this.displayTimer(numberOfSeconds);
+        self.displayTimer(numberOfSeconds);
         timerInfo.innerText = "-" + 5;
-        setTimeout(this.hideTimerInfo, 1000);
+        setTimeout(self.hideTimerInfo, 1000);
     }
 }
 

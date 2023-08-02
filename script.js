@@ -31,8 +31,8 @@ function initGame(){
     levelService.displayLevel();
     levelService.hideLevel();
     timerService.initializeNumberOfSecond();
-    timerService.timer();
     scoreService.displayScore();
+    timerService.timer();
     scoreService.getMedal();
     loadRandomPicture(randomNumber);
 }

@@ -32,6 +32,13 @@ const musics = [
         music: "super-mario-bros-3-Athletic-BGM.mp3",
         clue: "3ème jeu",
         coins: 1000
+    },
+
+    {
+        title: "dd2",
+        music: "double-dragon-2-Title-Screen.mp3",
+        clue: "Double dragon 2",
+        coins: 1000
     }
 ];
 

@@ -1,5 +1,7 @@
 class JokerPowerUpService {
 
+    levelService = new LevelService();
+
     displayJokerPowerUpQuantity(){
         jokerPowerUp.innerHTML = player.powerUps[1].quantity;
     }
@@ -16,8 +18,17 @@ class JokerPowerUpService {
 
     getRightAnswer(){
         if(player.powerUps[1].quantity > 0){
-            let game = this.getCurrentGame(randomNumber);
-            userInput.value = game.title;
+            let currentLevel = this.levelService.getCurrentLevel();
+            if(currentLevel %10 === 0){
+                let music = this.getCurrentMusic(randomNumber);
+                console.log(music);
+                userInput.value = music.title;
+            } else {
+                let game = this.getCurrentGame(randomNumber);
+                userInput.value = game.title;
+            }
+            // let game = this.getCurrentGame(randomNumber);
+            // userInput.value = game.title;
             player.powerUps[1].quantity--;
             this.displayJokerPowerUpQuantity();
         } else {
@@ -33,7 +44,6 @@ class JokerPowerUpService {
                 this.displayJokerPowerUpQuantity();
             } else {
                 jokerButton.style.border = "solid 2px red";
-                //faire disparaitre les border rouges apres un certains temps;
                 this.removeRedBorders();
                 powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
@@ -43,5 +53,9 @@ class JokerPowerUpService {
 
     getCurrentGame(number){
         return games[number];
+    }
+
+    getCurrentMusic(number){
+        return musics[number];
     }
 }

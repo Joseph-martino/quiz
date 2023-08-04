@@ -1,4 +1,7 @@
 class CluePowerUpService {
+
+    levelService = new LevelService();
+
     displayCluePowerUpQuantity(){
         cluePowerUp.innerHTML = player.powerUps[2].quantity;
     }
@@ -11,10 +14,21 @@ class CluePowerUpService {
         return games[number];
     }
 
+    getCurrentMusic(number){
+        return musics[number];
+    }
+
     displayClue(){
         if(player.powerUps[2].quantity > 0){
-            let game = this.getCurrentGame(randomNumber);
-            clueContent.innerHTML = game.clue;
+            let currentLevel = this.levelService.getCurrentLevel();
+            if(currentLevel %10 === 0){
+                let music = this.getCurrentMusic(randomNumber);
+                console.log(music);
+                clueContent.innerHTML = music.clue;
+            } else {
+                let game = this.getCurrentGame(randomNumber);
+                clueContent.innerHTML = game.clue;
+            }
             player.powerUps[2].quantity--;
             this.displayCluePowerUpQuantity();
         } else {

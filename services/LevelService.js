@@ -8,11 +8,14 @@ class LevelService {
         level+=1;
     }
 
+    getCurrentLevel(){
+        return level;
+    }
+
     displayLevel(){
         this.riseLevel();
         levelDisplay.innerHTML = "Level " + level;
         levelDisplay.style.display = "block";
-
     }
 
     hideLevel(){

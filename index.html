@@ -6,17 +6,18 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="style/style.css">
     <script src="data/data.js" defer></script>
+    <script src="data/bosses.js" defer></script>
     <script src="data/high-score.js" defer></script>
     <script src="utils.js" defer></script>
+    <script src="services/LevelService.js" defer></script>
     <script src="services/powerUpServices/TimeStopPowerUpService.js" defer></script>
     <script src="services/powerUpServices/JokerPowerUpService.js" defer></script>
     <script src="services/powerUpServices/CluePowerUpService.js" defer></script>
-    <script src="services/LevelService.js" defer></script>
     <script src="services/ScoreService.js" defer></script>
     <script src="services/RewardService.js" defer></script>
     <script src="services/GameOverService.js" defer></script>
     <script src="services/TimerService.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="services/GameService.js" defer></script>
     <script src="Main.js" defer></script>
 </head>
 <body>
@@ -41,6 +42,7 @@
         <div class="score-container">
             <h2>Score</h2>
             <h2 id="score"></h2>
+            <h2 id="coins"></h2>
             <h2 id="medal"></h2>
             <img id="medal-picture" src="" alt="medal-icon">
         </div>
@@ -65,6 +67,7 @@
         <div class="main-container">
             <div class="picture-container">
                 <img id="image" src="" alt="game-picture">
+                <audio id="game-music" src=""></audio>
             </div>
     
             <div class="answer-container">
@@ -72,7 +75,6 @@
                 <button id="validation-button">Valider</button>
                 <audio id="good-answer-sound" src="sounds/TunePocket-Power-Up-Retro-Game-Sound-1-Preview.mp3"></audio>
                 <button id="skip-button">Passer</button>
-                <!--button id="clue">Indice</button-->
             </div>
     
             <div class="clue-content-container">
@@ -85,6 +87,7 @@
         <h3 id="game-over">Game Over</h3>
         <p id="reward-message"></p>
         <p>Score: <span id="end-game-score"></span></p>
+        <p>Pièce : <span id="end-game-coins"></span></p>
         <div id="high-score-container">
             <div id="score1"></div>
             <div id="score2"></div>

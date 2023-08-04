@@ -39,7 +39,7 @@ class TimerService {
         } else if(score >20 && score <= 40){
             self.changeTimer(1000);
         } else if(score > 40){
-            self.changeTimer(700);
+            self.changeTimer(800);
         }
     }
     

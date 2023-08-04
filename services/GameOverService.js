@@ -11,6 +11,7 @@ class GameOverService {
         this.setScoreToPlayer(playerFinalScore);
         this.rewardService.getReward(playerFinalScore);
         this.displayHighScore(highScore, player);
+        this.rewardService.displayPlayerCoins();
     }
     
     displayGameOver(){

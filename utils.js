@@ -6,11 +6,11 @@ let answerDuration;
 let timerInterval = 1000;
 const imageFolder = "images/";
 const iconFolder = "icons/";
+const musicFolder = "sounds/musics/";
 const scoreDisplay = document.getElementById("score");
 const medalIcon = document.getElementById("medal-picture");
 const timerDisplay = document.getElementById("timer");
 const timerInfo = document.getElementById("timer-info");
-//const clueButtonTest = document.getElementById("clue");
 const clueContent = document.getElementById("clue-content");
 const gameView = document.getElementById("game-container");
 const gameOverView = document.getElementById("game-over-container");
@@ -21,7 +21,8 @@ const validationbutton = document.getElementById("validation-button");
 const skipButton = document.getElementById("skip-button");
 const restartButton = document.getElementById("restart-game");
 let picture = document.getElementById("image");
-let randomNumber = Math.floor(Math.random() * games.length); 
+//let randomNumber = Math.floor(Math.random() * games.length); 
+//let randomNumberMusic = Math.floor(Math.random() * musics.length);
 const endGameScore= document.getElementById("end-game-score");
 const StartButton = document.getElementById("start-button");
 const hightScoreContainer = document.getElementById("high-score-container");
@@ -43,10 +44,14 @@ const jokerPowerUp = document.getElementById("joker-power");
 const clueButton = document.getElementById("clue-power-button");
 const cluePowerUp = document.getElementById("clue-power");
 const powerUpInfo = document.getElementById("power-up-info");
+const gameMusic = document.getElementById("game-music");
+const coins= document.getElementById("coins");
+const endGameCoinsDisplay = document.getElementById("end-game-coins");
 let level;
 let player = {
     name:"",
     score:"",
+    coins: 0,
     powerUps: [
         {
             name: "Time Stop",

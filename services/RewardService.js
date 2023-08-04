@@ -12,4 +12,9 @@ class RewardService {
             rewardDisplay.innerText = "Pas mal";
         }
     }
+
+
+        displayPlayerCoins(){
+            endGameCoinsDisplay.innerHTML = player.coins;
+        }
 }

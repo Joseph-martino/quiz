@@ -1,8 +1,18 @@
-//let gameOverService = new gameOverService();
-//let timeStopPowerUp = new TimeStopPowerUp();
+let gameService = new GameService();
+let cluePowerUpService = new CluePowerUpService();
+let timeStopPowerUpService = new TimeStopPowerUpService(); 
+let jokerPowerUpService = new JokerPowerUpService(); 
 
-StartButton.addEventListener('click',launchGame);
-validationbutton.addEventListener('click', checkUserAnswer);
+StartButton.addEventListener('click', function(){
+    gameService.launchGame();
+});
+
+
+validationbutton.addEventListener('click', function(){
+    gameService.checkUserAnswer();
+});
+
+
 userInput.addEventListener('keypress', function(event){
     if(event.key === "Enter"){
         event.preventDefault();
@@ -10,9 +20,14 @@ userInput.addEventListener('keypress', function(event){
     }
 });
 
-skipButton.addEventListener('click', skip);
-//clueButtonTest.addEventListener('click', showClue);
-restartButton.addEventListener('click', reloadGame);
+skipButton.addEventListener('click', function(){
+    gameService.skip();
+});
+
+restartButton.addEventListener('click', function(){
+    gameService.reloadGame();
+});
+
 userConfirmationButton.addEventListener('click', function(){
     gameOverService.setPlayerName()
 },false);

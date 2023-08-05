@@ -4,6 +4,7 @@ class Player{
     score;
     coins;
     powerUps;
+    medal;
 
     constructor(){
         this.score = 0;
@@ -31,7 +32,7 @@ class Player{
         return this.coins;
     }
 
-    setName(coins){
+    setCoins(coins){
         this.coins = coins;
     }
 
@@ -39,12 +40,20 @@ class Player{
         return this.powerUps;
     }
 
-    setName(powerUps){
+    setPowerUps(powerUps){
         this.powerUps = powerUps;
     }
 
     addPowerUp(powerUp){
         this.powerUps.push(powerUp);
+    }
+
+    getMedal(){
+        return this.medal;
+    }
+
+    setMedal(medal){
+        this.medal = medal;
     }
 
 }

@@ -7,7 +7,6 @@ class PowerUp {
         this.quantity = 0;
     }
     
-
     getName(){
         return this.name;
     }

@@ -2,8 +2,8 @@ class CluePowerUpService {
 
     levelService = new LevelService();
 
-    displayCluePowerUpQuantity(){
-        //cluePowerUp.innerHTML = player.powerUps[2].quantity;
+    displayCluePowerUpQuantity(clue){
+        clue.cluePowerUp.innerHTML = clue.getQuantity();
     }
 
     hideInfo(){

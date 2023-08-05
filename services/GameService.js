@@ -7,7 +7,8 @@ class GameService {
     timeStopPowerUpService = new TimeStopPowerUpService();
     jokerPowerUpService = new JokerPowerUpService();
     cluePowerUpService = new CluePowerUpService();
-    powersUp = new PowerUpsService();
+    playerService = new PlayerService();
+    medalService = new MedalService();
     randomNumber;
     consecutiveAnswers;
     player;
@@ -18,7 +19,6 @@ class GameService {
     reloadGame() {
         window.location.reload();
     }
-
     
     generateRandomNumber(array) {
         this.randomNumber = Math.floor(Math.random() * array.length);
@@ -64,24 +64,27 @@ class GameService {
     }
 
     initGame() {
-        this.player = new Player();
-        this.clue = new Clue();
-        this.timeStop = new TimeStop();
-        this.joker = new Joker();
-        this.player.addPowerUp(this.clue);
-        this.player.addPowerUp(this.timeStop);
-        this.player.addPowerUp(this.joker);
+        //.playerService.createPlayer();
+        this.player = this.playerService.createPlayer();
+        // this.player = new Player();
+        // this.clue = new Clue();
+        // this.timeStop = new TimeStop();
+        // this.joker = new Joker();
+        // this.score = new Score();
+        // this.player.setScore(this.score.getScore());
+        // this.player.addPowerUp(this.clue);
+        // this.player.addPowerUp(this.timeStop);
+        // this.player.addPowerUp(this.joker);
         this.consecutiveAnswers = 0;
 
-        this.powersUp.displayPowerUpQuantity(this.clue);
-        this.powersUp.displayPowerUpQuantity(this.timeStop);
-        this.powersUp.displayPowerUpQuantity(this.joker);
+        // this.powersUp.displayPowerUpQuantity(this.clue);
+        // this.powersUp.displayPowerUpQuantity(this.timeStop);
+        // this.powersUp.displayPowerUpQuantity(this.joker);
 
 
         // this.timeStopPowerUpService.displayTimeStopPowerUpQuantity();
         // this.jokerPowerUpService.displayJokerPowerUpQuantity();
         // this.cluePowerUpService.displayCluePowerUpQuantity();
-
 
         userInput.focus();
         //this.scoreService.initializeScore();
@@ -89,9 +92,10 @@ class GameService {
         this.levelService.displayLevel();
         this.levelService.hideLevel();
         this.timerService.initializeNumberOfSecond();
-        this.scoreService.displayScore();
-        this.timerService.timer();
-        this.scoreService.getMedal();
+        this.scoreService.displayScore(this.player.getScore());
+        this.timerService.timer(this.player.getScore());
+        //this.scoreService.getMedal();
+        this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.generateRandomNumber(games);
         this.loadRandomPicture(this.randomNumber);
     }
@@ -104,10 +108,12 @@ class GameService {
 
     answerVerification(array) {
         console.log(array);
+        console.log(this.player);
+        console.log("score: " + this.player.getScore().getScoreValue());
         goodAnswerSound.play();
         gameMusic.src = "";
         this.consecutiveAnswers++;
-        this.timeStopPowerUpService.getTimeStopPowerUp(consecutiveAnswers);
+        this.timeStopPowerUpService.getTimeStopPowerUp(this.consecutiveAnswers);
         this.timerService.addTimeToTimer();
         this.scoreService.addPointToScore();
         this.levelService.displayLevel();

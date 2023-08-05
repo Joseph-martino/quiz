@@ -9,6 +9,8 @@ class GameService {
     cluePowerUpService = new CluePowerUpService();
     playerService = new PlayerService();
     medalService = new MedalService();
+    goodAnswerSound = document.getElementById("good-answer-sound");
+    gameMusic = document.getElementById("game-music");
     randomNumber;
     consecutiveAnswers;
     player;
@@ -64,28 +66,8 @@ class GameService {
     }
 
     initGame() {
-        //.playerService.createPlayer();
         this.player = this.playerService.createPlayer();
-        // this.player = new Player();
-        // this.clue = new Clue();
-        // this.timeStop = new TimeStop();
-        // this.joker = new Joker();
-        // this.score = new Score();
-        // this.player.setScore(this.score.getScore());
-        // this.player.addPowerUp(this.clue);
-        // this.player.addPowerUp(this.timeStop);
-        // this.player.addPowerUp(this.joker);
         this.consecutiveAnswers = 0;
-
-        // this.powersUp.displayPowerUpQuantity(this.clue);
-        // this.powersUp.displayPowerUpQuantity(this.timeStop);
-        // this.powersUp.displayPowerUpQuantity(this.joker);
-
-
-        // this.timeStopPowerUpService.displayTimeStopPowerUpQuantity();
-        // this.jokerPowerUpService.displayJokerPowerUpQuantity();
-        // this.cluePowerUpService.displayCluePowerUpQuantity();
-
         userInput.focus();
         //this.scoreService.initializeScore();
         this.levelService.initializeLevel();
@@ -107,19 +89,17 @@ class GameService {
     }
 
     answerVerification(array) {
-        console.log(array);
-        console.log(this.player);
-        console.log("score: " + this.player.getScore().getScoreValue());
-        goodAnswerSound.play();
-        gameMusic.src = "";
+        
+        this.goodAnswerSound.play();
+        this.gameMusic.src = "";
         this.consecutiveAnswers++;
         this.timeStopPowerUpService.getTimeStopPowerUp(this.consecutiveAnswers);
         this.timerService.addTimeToTimer();
-        this.scoreService.addPointToScore();
+        this.scoreService.addPointsToScore(this.player.getScore());
         this.levelService.displayLevel();
         this.levelService.hideLevel();
-        this.scoreService.getMedal(userScore);
-        this.scoreService.displayScore();
+        this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
+        this.scoreService.displayScore(this.player.getScore());
         let currentScore = this.scoreService.getCurrentScore();
         this.jokerPowerUpService.getJokerPowerUp(currentScore);
         this.cluePowerUpService.getCluePowerUp(currentScore);
@@ -131,14 +111,19 @@ class GameService {
     }
 
     checkUserAnswer() {
+        let question;
         let currentLevel = this.levelService.getCurrentLevel();
         if (currentLevel % 10 === 0) {
+            question = musics;
+            console.log(question);
             if (userInput.value.toLowerCase() === musics[this.randomNumber].title) {
                 this.answerVerification(musics);
             } else {
                 userInput.style.border = "solid 3px red";
             }
         } else if (currentLevel % 10 != 0) {
+            question = games;
+            console.log(question);
             if (userInput.value.toLowerCase() === games[this.randomNumber].title) {
                 this.answerVerification(games);
             }

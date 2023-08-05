@@ -44,7 +44,6 @@ class TimerService {
     }
     
     timer(score){
-        let scoreTest = self.scoreService.getCurrentScore(score);
         clearInterval(this.interval);
         self.addContentToTimer();
         if(numberOfSeconds <= 0){
@@ -54,7 +53,7 @@ class TimerService {
         }
         //let scoreTest = self.scoreService.getCurrentScore(score);
         //score = score.getScoreValue();
-        self.checkScore(scoreTest);
+        self.checkScore(score);
         this.interval = window.setInterval(self.timer, self.timerDelay);
         
 

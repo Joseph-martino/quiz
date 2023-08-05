@@ -12,8 +12,11 @@ class ScoreService {
         endGameScore.innerHTML = score;
     }
     
-    addPointToScore(){
-        userScore += 10;
+    addPointsToScore(score){
+        let currentScore = score.getScoreValue();
+        let newScore = currentScore + 10;
+        score.setScoreValue(newScore);
+        console.log(score);
     }
     
     soustractPointToScore(){

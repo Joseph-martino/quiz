@@ -1,7 +1,7 @@
-let userScore;
-let gameOver;
+//let userScore;
+//let gameOver;
 let numberOfSeconds;
-let consecutiveAnswers;
+//let consecutiveAnswers;
 let answerDuration;
 let timerInterval = 1000;
 const imageFolder = "images/";
@@ -48,24 +48,24 @@ const gameMusic = document.getElementById("game-music");
 const coins= document.getElementById("coins");
 const endGameCoinsDisplay = document.getElementById("end-game-coins");
 let level;
-let player = {
-    name:"",
-    score:"",
-    coins: 0,
-    powerUps: [
-        {
-            name: "Time Stop",
-            quantity: 0,
-        },
+// let player = {
+//     name:"",
+//     score:"",
+//     coins: 0,
+//     powerUps: [
+//         {
+//             name: "Time Stop",
+//             quantity: 0,
+//         },
 
-        {
-            name: "Joker",
-            quantity: 0
-        },
+//         {
+//             name: "Joker",
+//             quantity: 0
+//         },
 
-        {
-            name: "Clue",
-            quantity: 0
-        }
-    ]
-}
+//         {
+//             name: "Clue",
+//             quantity: 0
+//         }
+//     ]
+// }

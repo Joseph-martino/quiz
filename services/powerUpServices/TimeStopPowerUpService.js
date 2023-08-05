@@ -33,14 +33,15 @@ class TimeStopPowerUpService {
         setTimeout(() => powerUpInfo.innerHTML = "", 1000);
     }
 
+    
     displayTimeStopPowerUpQuantity(){
-        timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
+        //timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
     }
     useTimeStop(){
         if(player.powerUps[0].quantity > 0){
             if(this.isUsed === false){
                 this.addTimeToTimer();
-                player.powerUps[0].quantity--;
+                //player.powerUps[0].quantity--;
                 this.displayTimeStopPowerUpQuantity();
                 this.isUsed = true;
                 setTimeout(() => {

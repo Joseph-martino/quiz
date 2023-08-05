@@ -7,7 +7,13 @@ class GameService {
     timeStopPowerUpService = new TimeStopPowerUpService();
     jokerPowerUpService = new JokerPowerUpService();
     cluePowerUpService = new CluePowerUpService();
+    powersUp = new PowerUpsService();
     randomNumber;
+    consecutiveAnswers;
+    player;
+    clue;
+    joker;
+    timeStop;
 
     reloadGame() {
         window.location.reload();
@@ -16,7 +22,6 @@ class GameService {
     
     generateRandomNumber(array) {
         this.randomNumber = Math.floor(Math.random() * array.length);
-        //return this.randomNumber;
     }
     
     getRandomNumber(){
@@ -45,8 +50,6 @@ class GameService {
             this.randomNumber = this.getRandomNumber();
             this.hidePicture();
             this.loadRandomMusic(this.randomNumber);
-            // player.coins = musics[randomNumberMusicArray].coins;
-            // coins.innerHTML = "pièces: " + player.coins;
         } else {
             this.generateRandomNumber(games);
             this.randomNumber = this.getRandomNumber();
@@ -61,13 +64,27 @@ class GameService {
     }
 
     initGame() {
-        gameOver = false;
-        consecutiveAnswers = 0;
-        this.timeStopPowerUpService.displayTimeStopPowerUpQuantity();
-        this.jokerPowerUpService.displayJokerPowerUpQuantity();
-        this.cluePowerUpService.displayCluePowerUpQuantity();
+        this.player = new Player();
+        this.clue = new Clue();
+        this.timeStop = new TimeStop();
+        this.joker = new Joker();
+        this.player.addPowerUp(this.clue);
+        this.player.addPowerUp(this.timeStop);
+        this.player.addPowerUp(this.joker);
+        this.consecutiveAnswers = 0;
+
+        this.powersUp.displayPowerUpQuantity(this.clue);
+        this.powersUp.displayPowerUpQuantity(this.timeStop);
+        this.powersUp.displayPowerUpQuantity(this.joker);
+
+
+        // this.timeStopPowerUpService.displayTimeStopPowerUpQuantity();
+        // this.jokerPowerUpService.displayJokerPowerUpQuantity();
+        // this.cluePowerUpService.displayCluePowerUpQuantity();
+
+
         userInput.focus();
-        this.scoreService.initializeScore();
+        //this.scoreService.initializeScore();
         this.levelService.initializeLevel();
         this.levelService.displayLevel();
         this.levelService.hideLevel();
@@ -85,51 +102,11 @@ class GameService {
         this.initGame();
     }
 
-    // function checkUserAnswer(){
-    //     if(userInput.value.toLowerCase() === games[randomNumber].title /*|| userInput.value.toLowerCase() === musics[randomNumberMusic].title || userInput.value.toLowerCase() === "nadine"*/){
-    //         console.log(musics[randomNumberMusic].title);
-    //         console.log(games[randomNumber].title);
-    //         console.log(player.coins);
-    //         goodAnswerSound.play();
-    //         gameMusic.src = "";
-    //         randomNumber = generateRandomNumber(games);
-    //         consecutiveAnswers++;
-    //         timeStopPowerUpService.getTimeStopPowerUp(consecutiveAnswers);
-    //         timerService.addTimeToTimer();
-    //         scoreService.addPointToScore();
-    //         levelService.displayLevel();
-    //         levelService.hideLevel();
-    //         scoreService.getMedal(userScore);
-    //         scoreService.displayScore();
-    //         currentScore = scoreService.getCurrentScore();
-    //         jokerPowerUpService.getJokerPowerUp(currentScore);
-    //         cluePowerUpService.getCluePowerUp(currentScore);
-    //         removeClue();
-    //         currentLevel = levelService.getCurrentLevel();
-    //         //checkIfBoss(currentLevel);
-    //         if(currentLevel %10 === 0){
-    //             randomNumberMusicArray = generateRandomNumber(musics);
-    //             hidePicture();
-    //             loadRandomMusic(randomNumberMusicArray);
-    //             player.coins = musics[randomNumberMusicArray].coins;
-    //             coins.innerHTML = "pièces: " + player.coins;
-    //         } else {
-    //             showPicture();
-    //             loadRandomPicture(randomNumber);
-    //         }
-    //         cleanInputField();
-    //         userInput.focus();
-    //     } else {
-    //         userInput.style.border = "solid 3px red";
-    //     }
-    // }
-
     answerVerification(array) {
         console.log(array);
         goodAnswerSound.play();
         gameMusic.src = "";
-        //let randomNumber = this.generateRandomNumber(array);
-        consecutiveAnswers++;
+        this.consecutiveAnswers++;
         this.timeStopPowerUpService.getTimeStopPowerUp(consecutiveAnswers);
         this.timerService.addTimeToTimer();
         this.scoreService.addPointToScore();
@@ -143,17 +120,6 @@ class GameService {
         this.removeClue();
         let currentLevel = this.levelService.getCurrentLevel();
         this.checkIfBoss(currentLevel);
-        // if (currentLevel % 10 === 0) {
-        //     //let randomNumber2 = generateRandomNumber(musics);
-        //     this.hidePicture();
-        //     this.loadRandomMusic(this.randomNumber);
-        //     // player.coins = musics[randomNumberMusicArray].coins;
-        //     // coins.innerHTML = "pièces: " + player.coins;
-        // } else {
-        //     //let randomNumber3 = generateRandomNumber(games);
-        //     this.showPicture();
-        //     this.loadRandomPicture(this.randomNumber);
-        // }
         this.cleanInputField();
         userInput.focus();
     }
@@ -161,16 +127,12 @@ class GameService {
     checkUserAnswer() {
         let currentLevel = this.levelService.getCurrentLevel();
         if (currentLevel % 10 === 0) {
-            console.log("music");
-            console.log("music: " + musics[this.randomNumber].title);
             if (userInput.value.toLowerCase() === musics[this.randomNumber].title) {
                 this.answerVerification(musics);
             } else {
                 userInput.style.border = "solid 3px red";
             }
         } else if (currentLevel % 10 != 0) {
-            console.log("image");
-            console.log("image: " + games[this.randomNumber].title);
             if (userInput.value.toLowerCase() === games[this.randomNumber].title) {
                 this.answerVerification(games);
             }
@@ -180,17 +142,17 @@ class GameService {
     skip() {
         gameMusic.src = "";
         this.randomNumber = this.generateRandomNumber(games);
-        consecutiveAnswers = 0;
+        this.consecutiveAnswers = 0;
         this.timerService.decreaseTimeToTimer();
         this.scoreService.soustractPointToScore();
         this.levelService.displayLevel();
         this.levelService.hideLevel();
         this.scoreService.getMedal(userScore);
         this.scoreService.displayScore();
-        removeClue();
+        this.removeClue();
         this.loadRandomPicture(this.randomNumber);
-        currentLevel = levelService.getCurrentLevel();
-        //this.checkIfBoss(currentLevel);
+        let currentLevel = this.levelService.getCurrentLevel();
+        this.checkIfBoss(currentLevel);
         this.cleanInputField();
         userInput.focus();
     }

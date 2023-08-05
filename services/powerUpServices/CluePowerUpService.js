@@ -3,7 +3,7 @@ class CluePowerUpService {
     levelService = new LevelService();
 
     displayCluePowerUpQuantity(){
-        cluePowerUp.innerHTML = player.powerUps[2].quantity;
+        //cluePowerUp.innerHTML = player.powerUps[2].quantity;
     }
 
     hideInfo(){
@@ -40,7 +40,7 @@ class CluePowerUpService {
     getCluePowerUp(score){
         if(score != 0 && score %4 === 0){
             if(player.powerUps[2].quantity < 5){
-                player.powerUps[2].quantity = player.powerUps[2].quantity + 1;
+                //player.powerUps[2].quantity = player.powerUps[2].quantity + 1;
                 this.displayCluePowerUpQuantity();
             } else {
                 clueButton.style.border = "solid 2px red";

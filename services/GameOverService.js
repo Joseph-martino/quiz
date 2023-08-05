@@ -2,9 +2,23 @@ class GameOverService {
 
     scoreService = new ScoreService();
     rewardService = new RewardService();
+    gameOver;
+
+    constructor(){
+        this.gameOver = false;
+    }
+
+    getGameOver(){
+        return this.gameOver;
+    }
+
+    setGameOver(boolean){
+        this.gameOver = boolean;
+    }
+
 
     setEndgame(){
-        gameOver = true;
+        this.setGameOver(true);
         this.displayGameOver(this.gameOver);
         let playerFinalScore = this.scoreService.getCurrentScore();
         this.scoreService.displayFinalScore(playerFinalScore);

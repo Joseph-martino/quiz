@@ -1,8 +1,8 @@
 class ScoreService {
 
-    initializeScore(){
-        userScore = 0;
-    }
+    // initializeScore(){
+    //     userScore = 0;
+    // }
 
     getCurrentScore(){
         let currentScore = parseInt(scoreDisplay.innerText);

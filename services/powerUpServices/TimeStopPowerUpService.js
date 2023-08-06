@@ -4,13 +4,16 @@ class TimeStopPowerUpService {
 
     timerService = new TimerService();
 
-    getTimeStopPowerUp(number){
+    addTimeStopPowerUp(number, timeStop){
         if(number %7 === 0){
-            if(player.powerUps[0].quantity < 2){
-                player.powerUps[0].quantity = player.powerUps[0].quantity + 1;
-                this.displayTimeStopPowerUpQuantity();
+            if(timeStop.getQuantity() < 2){
+                let currentQuantity = timeStop.getQuantity();
+                let newQuantity = currentQuantity + 1;
+                timeStop.setQuantity(newQuantity);
+                //player.powerUps[0].quantity = player.powerUps[0].quantity + 1;
+                this.displayTimeStopPowerUpQuantity(timeStop);
             } else {
-                clueButton.style.border = "solid 2px red";
+                timeStopButton.style.border = "solid 2px red";
                 //faire disparaitre les border rouges apres un certains temps;
                 powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
@@ -34,8 +37,8 @@ class TimeStopPowerUpService {
     }
 
     
-    displayTimeStopPowerUpQuantity(){
-        //timeStopPowerUp.innerHTML = player.powerUps[0].quantity;
+    displayTimeStopPowerUpQuantity(timeStop){
+        timeStop.timeStopPowerUp.innerHTML = timeStop.getQuantity();
     }
     useTimeStop(){
         if(player.powerUps[0].quantity > 0){

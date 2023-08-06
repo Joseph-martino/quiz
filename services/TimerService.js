@@ -47,7 +47,7 @@ class TimerService {
         clearInterval(this.interval);
         self.addContentToTimer();
         if(numberOfSeconds <= 0){
-            self.gameOverService.setEndgame();
+            self.gameOverService.setEndgame(true, score);
             numberOfSeconds = 0;
             clearInterval(self.interval);
         }

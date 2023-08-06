@@ -11,7 +11,7 @@ class MedalService {
         } else if (score > 40 && score < 60) {
             medal.name = "Médaille d'argent";
             medal.medalDisplay.style.display = "block";
-            medalIcon.src = imageFolder + iconFolder + "silver-medal.png";
+            medal.medalDisplay.src = imageFolder + iconFolder + "silver-medal.png";
         } else if (score  > 60){
             medal.innerText = "Médaille d'or";
             medal.medalDisplay.style.display = "block";

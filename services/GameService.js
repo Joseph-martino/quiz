@@ -42,8 +42,8 @@ class GameService {
     }
 
     loadRandomMusic(number) {
-        gameMusic.src = musicFolder + musics[number].music;
-        gameMusic.play();
+        this.gameMusic.src = musicFolder + musics[number].music;
+        this.gameMusic.play();
     }
 
     checkIfBoss(level) {
@@ -76,7 +76,6 @@ class GameService {
         this.timerService.initializeNumberOfSecond();
         this.scoreService.displayScore(this.player.getScore());
         this.timerService.timer(this.scoreService.getCurrentScore(this.player.getScore()));
-        //this.scoreService.getMedal();
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.generateRandomNumber(games);
         this.loadRandomPicture(this.randomNumber);
@@ -88,21 +87,19 @@ class GameService {
         this.initGame();
     }
 
-    answerVerification(array) {
-        
+    answerVerification() {
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;
-        this.timeStopPowerUpService.getTimeStopPowerUp(this.consecutiveAnswers);
+        this.timeStopPowerUpService.addTimeStopPowerUp(this.consecutiveAnswers, this.player.getTimeStop());
         this.timerService.addTimeToTimer();
         this.scoreService.addPointsToScore(this.player.getScore());
         this.levelService.displayLevel();
         this.levelService.hideLevel();
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.scoreService.displayScore(this.player.getScore());
-        let currentScore = this.scoreService.getCurrentScore();
-        this.jokerPowerUpService.getJokerPowerUp(currentScore);
-        this.cluePowerUpService.getCluePowerUp(currentScore);
+        this.cluePowerUpService.addCluePowerUp(this.player.getScore(), this.player.getClue());
+        this.jokerPowerUpService.addJokerPowerUp(this.player.getScore(), this.player.getJoker());
         this.removeClue();
         let currentLevel = this.levelService.getCurrentLevel();
         this.checkIfBoss(currentLevel);
@@ -115,33 +112,26 @@ class GameService {
         let currentLevel = this.levelService.getCurrentLevel();
         if (currentLevel % 10 === 0) {
             question = musics;
-            console.log(question);
-            if (userInput.value.toLowerCase() === musics[this.randomNumber].title) {
-                this.answerVerification(musics);
-            } else {
-                userInput.style.border = "solid 3px red";
-            }
-        } else if (currentLevel % 10 != 0) {
+        } else {
             question = games;
-            console.log(question);
-            if (userInput.value.toLowerCase() === games[this.randomNumber].title) {
-                this.answerVerification(games);
-            }
+        }
+        if (userInput.value.toLowerCase() === question[this.randomNumber].title) {
+                this.answerVerification(question);
+        } else {
+                userInput.style.border = "solid 3px red";
         }
     }
 
     skip() {
-        gameMusic.src = "";
-        this.randomNumber = this.generateRandomNumber(games);
+        this.gameMusic.src = "";
         this.consecutiveAnswers = 0;
         this.timerService.decreaseTimeToTimer();
-        this.scoreService.soustractPointToScore();
+        this.scoreService.soustractPointToScore(this.player.getScore());
         this.levelService.displayLevel();
         this.levelService.hideLevel();
-        this.scoreService.getMedal(userScore);
-        this.scoreService.displayScore();
+        this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
+        this.scoreService.displayScore(this.player.getScore());
         this.removeClue();
-        this.loadRandomPicture(this.randomNumber);
         let currentLevel = this.levelService.getCurrentLevel();
         this.checkIfBoss(currentLevel);
         this.cleanInputField();

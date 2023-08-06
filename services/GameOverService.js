@@ -17,27 +17,27 @@ class GameOverService {
     }
 
 
-    setEndgame(){
-        this.setGameOver(true);
+    setEndgame(boolean, score){
+        this.setGameOver(boolean);
         this.displayGameOver(this.gameOver);
-        let playerFinalScore = this.scoreService.getCurrentScore();
-        this.scoreService.displayFinalScore(playerFinalScore);
-        this.setScoreToPlayer(playerFinalScore);
-        this.rewardService.getReward(playerFinalScore);
+        //let playerFinalScore = this.scoreService.getCurrentScore();
+        this.scoreService.displayFinalScore(score);
+        //this.setScoreToPlayer(playerFinalScore);
+        this.rewardService.getReward(score);
         this.displayHighScore(highScore, player);
         this.rewardService.displayPlayerCoins();
     }
     
-    displayGameOver(){
+    displayGameOver(gameOver){
         if(gameOver){
             gameView.style.display = "none";
             gameOverView.style.display = "block";
         }
     }
 
-    setScoreToPlayer(score){
-        player.score = score;
-    }
+    // setScoreToPlayer(score){
+    //     player.score = score;
+    // }
 
     sortArrayByDescendingOrder(array){
         let value;

@@ -56,4 +56,16 @@ class Player{
         this.medal = medal;
     }
 
+    getClue(){
+        return this.powerUps[0];
+    }
+
+    getTimeStop(){
+        return this.powerUps[1];
+    }
+
+    getJoker(){
+        return this.powerUps[2];
+    }
+
 }

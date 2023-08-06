@@ -2,8 +2,8 @@ class JokerPowerUpService {
 
     levelService = new LevelService();
 
-    displayJokerPowerUpQuantity(){
-        //jokerPowerUp.innerHTML = player.powerUps[1].quantity;
+    displayJokerPowerUpQuantity(joker){
+        joker.jokerPowerUp.innerHTML = joker.getQuantity();
     }
 
     hideInfo(){
@@ -37,11 +37,13 @@ class JokerPowerUpService {
         }
     }
 
-    getJokerPowerUp(score){
-        if(score != 0 && score %3 === 0){
-            if(player.powerUps[1].quantity < 3){
-                //player.powerUps[1].quantity = player.powerUps[1].quantity + 1;
-                this.displayJokerPowerUpQuantity();
+    addJokerPowerUp(score, joker){
+        if(score.getScoreValue() != 0 && score.getScoreValue() %3 === 0){
+            if(joker.getQuantity() < 3){
+                let currentQuantity = joker.getQuantity();
+                let newQuantity = currentQuantity + 1;
+                joker.setQuantity(newQuantity);
+                this.displayJokerPowerUpQuantity(joker);
             } else {
                 jokerButton.style.border = "solid 2px red";
                 this.removeRedBorders();

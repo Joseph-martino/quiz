@@ -1,20 +1,20 @@
 class RewardService {
 
     getReward(score){
-        if(score <= 10) {
+        if(score.getScoreValue() <= 10) {
             rewardDisplay.innerText = "Naze";
         }
-        if (score > 10 && score <= 20) {
+        if (score.getScoreValue() > 10 && score.getScoreValue() <= 20) {
             rewardDisplay.innerText = "Bof";
-        } else if (score > 20 && score < 25) {
+        } else if (score.getScoreValue() > 20 && score.getScoreValue() < 25) {
             rewardDisplay.innerText = "Peu mieux faire";
-        } else if (score  >= 25){
+        } else if (score.getScoreValue() >= 25){
             rewardDisplay.innerText = "Pas mal";
         }
     }
 
 
-        displayPlayerCoins(){
-            endGameCoinsDisplay.innerHTML = player.coins;
+        displayPlayerCoins(player){
+            endGameCoinsDisplay.innerHTML = player.getCoins();
         }
 }

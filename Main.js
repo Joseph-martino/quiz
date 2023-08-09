@@ -2,6 +2,8 @@ let gameService = new GameService();
 let cluePowerUpService = new CluePowerUpService();
 let timeStopPowerUpService = new TimeStopPowerUpService(); 
 let jokerPowerUpService = new JokerPowerUpService(); 
+let playerService = new PlayerService();
+
 
 StartButton.addEventListener('click', function(){
     gameService.launchGame();
@@ -33,13 +35,15 @@ userConfirmationButton.addEventListener('click', function(){
 },false);
 
 timeStopButton.addEventListener('click', function(){
-    timeStopPowerUpService.useTimeStop();
+    timeStopPowerUpService.useTimeStop(gameService.getTimeStop());
 });
 
 jokerButton.addEventListener('click', function(){
-    jokerPowerUpService.getRightAnswer();
+    jokerPowerUpService.useJokerPower(gameService.getJoker(), gameService.getRandomNumber());
 });
 
+/////////////////paramètre
 clueButton.addEventListener('click', function(){
-    cluePowerUpService.displayClue();
+    cluePowerUpService.useCluePower(gameService.getClue(), gameService.getRandomNumber());
 });
+//https://stackoverflow.com/questions/64338265/javascript-addeventlistener-function-with-parameters

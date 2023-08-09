@@ -1,8 +1,11 @@
-class TimeStopPowerUpService {
+class TimeStopPowerUpService extends PowerUpsService{
 
     isUsed = false;
-
     timerService = new TimerService();
+
+    constructor(){
+        super();
+    }
 
     addTimeStopPowerUp(number, timeStop){
         if(number %7 === 0){
@@ -11,7 +14,7 @@ class TimeStopPowerUpService {
                 let newQuantity = currentQuantity + 1;
                 timeStop.setQuantity(newQuantity);
                 //player.powerUps[0].quantity = player.powerUps[0].quantity + 1;
-                this.displayTimeStopPowerUpQuantity(timeStop);
+                this.displayPowerUpQuantity(timeStop);
             } else {
                 timeStopButton.style.border = "solid 2px red";
                 //faire disparaitre les border rouges apres un certains temps;
@@ -32,20 +35,22 @@ class TimeStopPowerUpService {
         setTimeout(this.timerService.hideTimerInfo, 1000);
     }
 
-    hideInfo(){
-        setTimeout(() => powerUpInfo.innerHTML = "", 1000);
-    }
+    // hideInfo(){
+    //     setTimeout(() => powerUpInfo.innerHTML = "", 1000);
+    // }
 
     
-    displayTimeStopPowerUpQuantity(timeStop){
-        timeStop.timeStopPowerUp.innerHTML = timeStop.getQuantity();
-    }
-    useTimeStop(){
-        if(player.powerUps[0].quantity > 0){
+    // displayTimeStopPowerUpQuantity(timeStop){
+    //     timeStop.timeStopPowerUp.innerHTML = timeStop.getQuantity();
+    // }
+
+    useTimeStop(timeStop){
+        if(timeStop.getQuantity() > 0){
             if(this.isUsed === false){
                 this.addTimeToTimer();
-                //player.powerUps[0].quantity--;
-                this.displayTimeStopPowerUpQuantity();
+                let quantity = timeStop.getQuantity();
+                timeStop.setQuantity(quantity - 1);
+                this.displayPowerUpQuantity(timeStop);
                 this.isUsed = true;
                 setTimeout(() => {
                     this.isUsed = false;

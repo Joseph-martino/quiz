@@ -17,6 +17,12 @@ class GameService {
     clue;
     joker;
     timeStop;
+    self;
+
+    constructor(){
+        self = this;
+        this.player = this.playerService.createPlayer();
+    }
 
     reloadGame() {
         window.location.reload();
@@ -66,10 +72,9 @@ class GameService {
     }
 
     initGame() {
-        this.player = this.playerService.createPlayer();
+        // this.player = this.playerService.createPlayer();
         this.consecutiveAnswers = 0;
         userInput.focus();
-        //this.scoreService.initializeScore();
         this.levelService.initializeLevel();
         this.levelService.displayLevel();
         this.levelService.hideLevel();
@@ -87,7 +92,14 @@ class GameService {
         this.initGame();
     }
 
+    earnCoins(level,randomNumber){
+        if(level %10 === 0){
+            this.player.setCoins(this.player.getCoins() + musics[randomNumber].coins);
+        }
+    }
+
     answerVerification() {
+        console.log(this.player);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;
@@ -100,9 +112,10 @@ class GameService {
         this.scoreService.displayScore(this.player.getScore());
         this.cluePowerUpService.addCluePowerUp(this.player.getScore(), this.player.getClue());
         this.jokerPowerUpService.addJokerPowerUp(this.player.getScore(), this.player.getJoker());
-        this.removeClue();
+        this.removeClue(this.player.getClue());
         let currentLevel = this.levelService.getCurrentLevel();
         this.checkIfBoss(currentLevel);
+        this.earnCoins(currentLevel,this.randomNumber);
         this.cleanInputField();
         userInput.focus();
     }
@@ -131,18 +144,39 @@ class GameService {
         this.levelService.hideLevel();
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.scoreService.displayScore(this.player.getScore());
-        this.removeClue();
+        this.removeClue(this.player.getClue());
         let currentLevel = this.levelService.getCurrentLevel();
         this.checkIfBoss(currentLevel);
         this.cleanInputField();
         userInput.focus();
     }
 
-    showClue() {
-        clueContent.innerHTML = games[randomNumber].clue;
+    showClue(clue) {
+        clue.clueContent.innerHTML = games[randomNumber].clue;
     }
 
-    removeClue() {
-        clueContent.innerHTML = "";
+    removeClue(clue) {
+        clue.clueContent.innerHTML = "";
+    }
+
+    getPlayer(){
+        return this.player;
+    }
+
+    test(){
+        console.log("Salut " + this.player.getClue().getQuantity());
+        console.log("Bonjour " + this.player.getClue().getName());
+    }
+
+    getClue(){
+        return this.player.getClue();
+    }
+
+    getJoker(){
+        return this.player.getJoker();
+    }
+
+    getTimeStop(){
+        return this.player.getTimeStop();
     }
 }

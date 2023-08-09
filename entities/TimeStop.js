@@ -1,11 +1,11 @@
 class TimeStop extends PowerUp {
 
-    timeStopPowerUp;
+    quantityDisplay;
     
     constructor(){
         super();
         this.name = "Time Stop";
-        this.timeStopPowerUp = document.getElementById("time-stop-power");
-        this.timeStopPowerUp.innerHTML = this.getQuantity();
+        this.quantityDisplay = document.getElementById("time-stop-power");
+        this.quantityDisplay.innerHTML = this.getQuantity();
     }
 }

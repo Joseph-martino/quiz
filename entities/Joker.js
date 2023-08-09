@@ -1,11 +1,11 @@
 class Joker extends PowerUp {
 
-    jokerPowerUp;
+    quantityDisplay;
     
     constructor(){
         super();
         this.name = "Joker";
-        this.jokerPowerUp = document.getElementById("joker-power");
-        this.jokerPowerUp.innerHTML = this.getQuantity();
+        this.quantityDisplay = document.getElementById("joker-power");
+        this.quantityDisplay.innerHTML = this.getQuantity();
     }
 }

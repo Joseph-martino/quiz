@@ -1,12 +1,10 @@
 class PowerUpsService {
 
-    // displayPowerUpQuantity(powerUp){
-    //     if(powerUp.getName()=== "Time Stop"){
-    //         timeStopPowerUp.innerHTML = powerUp.getQuantity();
-    //     } else if (powerUp.getName() === "Clue"){
-    //         cluePowerUp.innerHTML = powerUp.getQuantity();
-    //     } else if (powerUp.getName() === "Joker"){
-    //         jokerPowerUp.innerHTML = powerUp.getQuantity();
-    //     } 
-    // }
+    displayPowerUpQuantity(powerUp){
+        powerUp.quantityDisplay.innerHTML = powerUp.getQuantity();
+    }
+
+        hideInfo(){
+        setTimeout(() => powerUpInfo.innerHTML = "", 1000);
+    }
 }

@@ -1,14 +1,18 @@
-class JokerPowerUpService {
+class JokerPowerUpService extends PowerUpsService {
 
     levelService = new LevelService();
 
-    displayJokerPowerUpQuantity(joker){
-        joker.jokerPowerUp.innerHTML = joker.getQuantity();
+    constructor(){
+        super();
     }
 
-    hideInfo(){
-        setTimeout(() => powerUpInfo.innerHTML = "", 1000);
-    }
+    // displayJokerPowerUpQuantity(joker){
+    //     joker.quantityDisplay.innerHTML = joker.getQuantity();
+    // }
+
+    // hideInfo(){
+    //     setTimeout(() => powerUpInfo.innerHTML = "", 1000);
+    // }
 
     removeRedBorders(){
         setTimeout(() => {
@@ -16,8 +20,8 @@ class JokerPowerUpService {
         },1000);
     }
 
-    getRightAnswer(){
-        if(player.powerUps[1].quantity > 0){
+    useJokerPower(joker, randomNumber){
+        if(joker.getQuantity() > 0){
             let currentLevel = this.levelService.getCurrentLevel();
             if(currentLevel %10 === 0){
                 let music = this.getCurrentMusic(randomNumber);
@@ -27,10 +31,9 @@ class JokerPowerUpService {
                 let game = this.getCurrentGame(randomNumber);
                 userInput.value = game.title;
             }
-            // let game = this.getCurrentGame(randomNumber);
-            // userInput.value = game.title;
-            player.powerUps[1].quantity--;
-            this.displayJokerPowerUpQuantity();
+            let quantity = joker.getQuantity();
+            joker.setQuantity(quantity - 1);
+            this.displayPowerUpQuantity(joker);
         } else {
             powerUpInfo.innerHTML = "Pas assez de pouvoir";
             this.hideInfo();
@@ -43,7 +46,7 @@ class JokerPowerUpService {
                 let currentQuantity = joker.getQuantity();
                 let newQuantity = currentQuantity + 1;
                 joker.setQuantity(newQuantity);
-                this.displayJokerPowerUpQuantity(joker);
+                this.displayPowerUpQuantity(joker);
             } else {
                 jokerButton.style.border = "solid 2px red";
                 this.removeRedBorders();

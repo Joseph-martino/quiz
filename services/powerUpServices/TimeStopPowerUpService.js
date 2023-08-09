@@ -18,7 +18,7 @@ class TimeStopPowerUpService extends PowerUpsService{
             } else {
                 timeStopButton.style.border = "solid 2px red";
                 //faire disparaitre les border rouges apres un certains temps;
-                powerUpInfo.innerHTML = "Quantité maximale atteinte";
+                this.powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
             }
         }
@@ -56,11 +56,11 @@ class TimeStopPowerUpService extends PowerUpsService{
                     this.isUsed = false;
                 }, 10000);
             } else {
-                powerUpInfo.innerHTML = "Temps de recharge";
+                this.powerUpInfo.innerHTML = "Temps de recharge";
                 this.hideInfo();
             } 
         } else {
-            powerUpInfo.innerHTML = "Pas assez de pouvoir";
+            this.powerUpInfo.innerHTML = "Pas assez de pouvoir";
             this.hideInfo();
         }
     }

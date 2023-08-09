@@ -40,7 +40,7 @@ class CluePowerUpService extends PowerUpsService{
             clue.setQuantity(quantity - 1);
             this.displayPowerUpQuantity(clue);
         } else {
-            powerUpInfo.innerHTML = "Pas assez de pouvoir";
+            this.powerUpInfo.innerHTML = "Pas assez de pouvoir";
             this.hideInfo();
         }
     }
@@ -55,7 +55,7 @@ class CluePowerUpService extends PowerUpsService{
             } else {
                 clueButton.style.border = "solid 2px red";
                 //faire disparaitre les border rouges apres un certains temps;
-                powerUpInfo.innerHTML = "Quantité maximale atteinte";
+                this.powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
             }
         }

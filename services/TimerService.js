@@ -44,7 +44,6 @@ class TimerService {
     }
     
     timer(score){
-        console.log(score);
         clearInterval(this.interval);
         self.addContentToTimer();
         if(numberOfSeconds <= 0){

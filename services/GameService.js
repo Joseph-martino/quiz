@@ -99,7 +99,6 @@ class GameService {
     }
 
     answerVerification() {
-        console.log(this.player);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;
@@ -161,11 +160,6 @@ class GameService {
 
     getPlayer(){
         return this.player;
-    }
-
-    test(){
-        console.log("Salut " + this.player.getClue().getQuantity());
-        console.log("Bonjour " + this.player.getClue().getName());
     }
 
     getClue(){

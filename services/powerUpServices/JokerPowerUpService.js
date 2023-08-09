@@ -35,7 +35,7 @@ class JokerPowerUpService extends PowerUpsService {
             joker.setQuantity(quantity - 1);
             this.displayPowerUpQuantity(joker);
         } else {
-            powerUpInfo.innerHTML = "Pas assez de pouvoir";
+            this.powerUpInfo.innerHTML = "Pas assez de pouvoir";
             this.hideInfo();
         }
     }
@@ -50,7 +50,7 @@ class JokerPowerUpService extends PowerUpsService {
             } else {
                 jokerButton.style.border = "solid 2px red";
                 this.removeRedBorders();
-                powerUpInfo.innerHTML = "Quantité maximale atteinte";
+                this.powerUpInfo.innerHTML = "Quantité maximale atteinte";
                 this.hideInfo();
             }
         }

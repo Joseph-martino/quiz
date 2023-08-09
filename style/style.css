@@ -31,3 +31,10 @@
 #animation-loader {
     display: none;
 }
+
+#time-stop-power-button {
+    background: linear-gradient(180deg, #FFC0CB 0%, #00FFFF 50%);
+}
+
+
+

@@ -33,7 +33,23 @@
 }
 
 #time-stop-power-button {
-    background: linear-gradient(180deg, #FFC0CB 0%, #00FFFF 50%);
+    background: linear-gradient(
+        
+    /*Début*/
+    to top, 
+    #8ED6FA 0%, 
+    #8ED6FA 0%, 
+    #a6a6a6 0%, 
+    #a6a6a6 100%
+    
+    /*fin
+    to top, 
+    #8ED6FA 0%, 
+    #8ED6FA 100%, 
+    #a6a6a6 100%, 
+    #a6a6a6 100%
+    */
+  );
 }
 
 

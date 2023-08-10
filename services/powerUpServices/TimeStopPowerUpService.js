@@ -43,8 +43,20 @@ class TimeStopPowerUpService extends PowerUpsService{
     // displayTimeStopPowerUpQuantity(timeStop){
     //     timeStop.timeStopPowerUp.innerHTML = timeStop.getQuantity();
     // }
+    setGradient(value) {
+        console.log(value);
+        timeStopButton.style.background = 
+        "linear-gradient(to top," 
+        + "#8ED6FA " + value + "%, " 
+        + "#8ED6FA " + value + "%, " 
+        + "#a6a6a6 " + value + "%, " 
+        + "#a6a6a6 100%" 
+        + ")";
+    }
 
     useTimeStop(timeStop){
+        let counter = 0;
+        let colorValue = 0;
         if(timeStop.getQuantity() > 0){
             if(this.isUsed === false){
                 this.addTimeToTimer();
@@ -55,6 +67,13 @@ class TimeStopPowerUpService extends PowerUpsService{
                 setTimeout(() => {
                     this.isUsed = false;
                 }, 10000);
+                setInterval(() => {
+                    if(counter < 10){
+                        counter++;
+                        colorValue+=10;
+                        this.setGradient(colorValue);
+                    }
+                },1000);
             } else {
                 this.powerUpInfo.innerHTML = "Temps de recharge";
                 this.hideInfo();

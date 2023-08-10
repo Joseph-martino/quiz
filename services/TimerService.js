@@ -6,6 +6,7 @@ class TimerService {
     timerDelay;
     interval;
     self
+    //scorePlayer = this.scoreService.getCurrentScore();
 
     constructor(){
         self = this;
@@ -44,6 +45,8 @@ class TimerService {
     }
     
     timer(score){
+        console.log("timer" + this);
+        console.log(this.scorePlayer);
         clearInterval(this.interval);
         self.addContentToTimer();
         if(numberOfSeconds <= 0){

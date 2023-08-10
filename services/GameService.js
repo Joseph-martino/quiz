@@ -80,6 +80,7 @@ class GameService {
         this.levelService.hideLevel();
         this.timerService.initializeNumberOfSecond();
         this.scoreService.displayScore(this.player.getScore());
+        console.log("gameService" + this);
         this.timerService.timer(this.scoreService.getCurrentScore(this.player.getScore()));
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.generateRandomNumber(games);
@@ -99,6 +100,7 @@ class GameService {
     }
 
     answerVerification() {
+        console.log("gameService" + this);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;

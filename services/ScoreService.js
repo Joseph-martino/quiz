@@ -3,6 +3,10 @@ class ScoreService {
     getCurrentScore(score){
         return score.getScoreValue();
     }
+
+    getScore(score){
+        return score;
+    }
     
     displayScore(score){
         score.scoreDisplay.innerHTML = score.getScoreValue();

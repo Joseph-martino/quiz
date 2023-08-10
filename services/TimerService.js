@@ -3,13 +3,32 @@ class TimerService {
     rewardService = new RewardService();
     scoreService = new ScoreService();
     gameOverService = new GameOverService();
+    playerService = new PlayerService();
     timerDelay;
     interval;
-    self
-    //scorePlayer = this.scoreService.getCurrentScore();
+    self;
+    scorePlayer;
+    player;
+
 
     constructor(){
         self = this;
+    }
+
+    getPlayer(player){
+        self.player = player;
+        console.log(self.player);
+    }
+
+    getPlayerScore(score){
+        //let scorePlayer = self.scoreService.getCurrentScore(score);
+        self.scorePlayer = self.scoreService.getScore(score);
+        console.log(self.scorePlayer);
+        //return self.scorePlayer;
+    }
+
+    test(){
+        this.playerService.test();
     }
 
     initializeNumberOfSecond(){
@@ -35,29 +54,47 @@ class TimerService {
     }
 
     checkScore(score){
-        if(score >= 0 && score <= 20){
+        if(score.getScoreValue() >= 0 && score.getScoreValue() <= 20){
             self.changeTimer(1500);
-        } else if(score >20 && score <= 40){
+        } else if(score.getScoreValue() >20 && score.getScoreValue() <= 40){
             self.changeTimer(1000);
-        } else if(score > 40){
+        } else if(score.getScoreValue() > 40){
             self.changeTimer(800);
         }
     }
+
+    // timerContentTest(score){
+    //     self.addContentToTimer();
+    //     if(numberOfSeconds <= 0){
+    //         self.gameOverService.setEndgame(true, score);
+    //         numberOfSeconds = 0;
+    //         clearInterval(self.interval);
+    //     }
+    //     self.checkScore(score);
+    // }
+
+    // timertest(score){
+    //     setInterval(() => {
+    //         console.log(score);
+    //         this.timerContentTest(score);
+    //     }, 1000);
+    // }
     
-    timer(score){
-        console.log("timer" + this);
-        console.log(this.scorePlayer);
+    timer(){
         clearInterval(this.interval);
         self.addContentToTimer();
         if(numberOfSeconds <= 0){
-            self.gameOverService.setEndgame(true, score);
+            self.gameOverService.setEndgame(true, self.player);
             numberOfSeconds = 0;
             clearInterval(self.interval);
         }
+        //console.log(self.scorePlayer);
         //let scoreTest = self.scoreService.getCurrentScore(score);
+        //console.log(scoreTest);
         //score = score.getScoreValue();
-        self.checkScore(score);
-        this.interval = window.setInterval(self.timer, self.timerDelay);
+        console.log(self.player);
+        self.checkScore(self.player.getScore());
+        this.interval = setInterval(self.timer, self.timerDelay);
         
 
         // const timer = window.setInterval(() => {

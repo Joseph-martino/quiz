@@ -22,12 +22,16 @@ class PlayerService {
         return this.player;
     }
 
-    getPlayer(){
-        return this.player;
+    getPlayer(player){
+        return player;
     }
 
     getClue(){
         console.log(this.player);
         return this.player.getClue();
+    }
+
+    test(){
+        console.log(this.player);
     }
 }

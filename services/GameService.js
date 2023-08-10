@@ -80,8 +80,9 @@ class GameService {
         this.levelService.hideLevel();
         this.timerService.initializeNumberOfSecond();
         this.scoreService.displayScore(this.player.getScore());
-        console.log("gameService" + this);
-        this.timerService.timer(this.scoreService.getCurrentScore(this.player.getScore()));
+        this.timerService.getPlayerScore(this.player.getScore());
+        this.timerService.getPlayer(this.player);
+        this.timerService.timer();
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.generateRandomNumber(games);
         this.loadRandomPicture(this.randomNumber);
@@ -100,13 +101,13 @@ class GameService {
     }
 
     answerVerification() {
-        console.log("gameService" + this);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;
         this.timeStopPowerUpService.addTimeStopPowerUp(this.consecutiveAnswers, this.player.getTimeStop());
         this.timerService.addTimeToTimer();
         this.scoreService.addPointsToScore(this.player.getScore());
+        this.timerService.getPlayerScore(this.player.getScore()); ///////////
         this.levelService.displayLevel();
         this.levelService.hideLevel();
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());

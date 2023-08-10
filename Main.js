@@ -1,4 +1,5 @@
 let gameService = new GameService();
+let gameOverService = new GameOverService();
 let cluePowerUpService = new CluePowerUpService();
 let timeStopPowerUpService = new TimeStopPowerUpService(); 
 let jokerPowerUpService = new JokerPowerUpService(); 
@@ -31,7 +32,7 @@ restartButton.addEventListener('click', function(){
 });
 
 userConfirmationButton.addEventListener('click', function(){
-    gameOverService.setPlayerName()
+    gameOverService.setPlayerName(gameService.getPlayer());
 },false);
 
 timeStopButton.addEventListener('click', function(){

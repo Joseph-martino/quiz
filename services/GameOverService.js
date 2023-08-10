@@ -17,15 +17,15 @@ class GameOverService {
     }
 
 
-    setEndgame(boolean, score){
+    setEndgame(boolean, player){
         this.setGameOver(boolean);
         this.displayGameOver(this.gameOver);
         //let playerFinalScore = this.scoreService.getCurrentScore();
-        this.scoreService.displayFinalScore(score);
+        this.scoreService.displayFinalScore(player.getScore());
         //this.setScoreToPlayer(playerFinalScore);
-        this.rewardService.getReward(score);
-        this.displayHighScore(highScore, player);
-        this.rewardService.displayPlayerCoins();
+        this.rewardService.getReward(player.getScore());
+        this.displayHighScore(highScore, player.getScore());
+        this.rewardService.displayPlayerCoins(player);
     }
     
     displayGameOver(gameOver){
@@ -57,7 +57,7 @@ class GameOverService {
 
     checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, score){
         this.sortArrayByDescendingOrder(array);
-        if(score > array[array.length -1].score){
+        if(score.getScoreValue() > array[array.length -1].score){
             return true;
         } else {
             return false;
@@ -75,15 +75,16 @@ class GameOverService {
     displayExistingScores(array){
         for(let i = 0; i < array.length; i++){
             let index = i+1;
-            let id= "score"+index;
+            let id = "score"+index;
             const div = document.getElementById(id);
             div.innerHTML = "Nom: " + array[i].name + " Score: " + array[i].score;
         }
     }
 
-    setPlayerName(){
-        player.name = userNameInput.value;
+    setPlayerName(player){
+        player.setName(userNameInput.value);
         highScore.push(player);
+        console.log(highScore);
         this.hideNewPlayerNameField();
         this.sortArrayByDescendingOrder(highScore);
         if(highScore.length >= 5){
@@ -92,11 +93,11 @@ class GameOverService {
         this.displayExistingScores(highScore);
     }
 
-    displayHighScore(array, player){
+    displayHighScore(array, score){
         if(array.length >= 5){
             this.sortArrayByDescendingOrder(array);
             this.displayExistingScores(array);
-            let isPlayerScoreUpperThanHightScore = this.checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, player.score);
+            let isPlayerScoreUpperThanHightScore = this.checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, score);
 
             if(isPlayerScoreUpperThanHightScore){
                 this.showNewPlayerNameField();

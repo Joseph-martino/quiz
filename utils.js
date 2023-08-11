@@ -1,9 +1,9 @@
 //let userScore;
 //let gameOver;
-let numberOfSeconds;
+//let numberOfSeconds;
 //let consecutiveAnswers;
-let answerDuration;
-let timerInterval = 1000;
+//let answerDuration;
+//let timerInterval = 1000;
 const imageFolder = "assets/images/";
 const iconFolder = "icons/";
 const musicFolder = "assets/sounds/musics/";

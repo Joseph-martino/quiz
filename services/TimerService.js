@@ -9,6 +9,7 @@ class TimerService {
     self;
     scorePlayer;
     player;
+    numberOfSeconds;
 
 
     constructor(){
@@ -17,13 +18,11 @@ class TimerService {
 
     getPlayer(player){
         self.player = player;
-        console.log(self.player);
     }
 
     getPlayerScore(score){
         //let scorePlayer = self.scoreService.getCurrentScore(score);
         self.scorePlayer = self.scoreService.getScore(score);
-        console.log(self.scorePlayer);
         //return self.scorePlayer;
     }
 
@@ -32,7 +31,7 @@ class TimerService {
     }
 
     initializeNumberOfSecond(){
-        numberOfSeconds = 30;
+        self.numberOfSeconds = 30;
     }
 
     displayTimer(number){
@@ -49,8 +48,8 @@ class TimerService {
     }
 
     addContentToTimer(){
-        numberOfSeconds--;
-        self.displayTimer(numberOfSeconds);
+        self.numberOfSeconds--;
+        self.displayTimer(self.numberOfSeconds);
     }
 
     checkScore(score){
@@ -81,21 +80,47 @@ class TimerService {
     // }
     
     timer(){
-        clearInterval(this.interval);
-        self.addContentToTimer();
-        if(numberOfSeconds <= 0){
+        console.log("titi");
+        clearInterval(window.interval);
+        if(self.numberOfSeconds > 0){
+            clearInterval(window.interval);
+            self.addContentToTimer();
+            self.checkScore(self.player.getScore());
+            window.interval = setInterval(self.timer, self.timerDelay);
+        } if(self.numberOfSeconds <= 0){
+            console.log("tata");
             self.gameOverService.setEndgame(true, self.player);
-            numberOfSeconds = 0;
-            clearInterval(self.interval);
+            self.numberOfSeconds = 0;
+            //clearInterval(this.interval);
         }
+        
+        
+        
         //console.log(self.scorePlayer);
         //let scoreTest = self.scoreService.getCurrentScore(score);
         //console.log(scoreTest);
         //score = score.getScoreValue();
-        console.log(self.player);
-        self.checkScore(self.player.getScore());
-        this.interval = setInterval(self.timer, self.timerDelay);
         
+        ///////////////////////////////////////////////////////////
+
+        // if(numberOfSeconds <= 0){
+        //     self.gameOverService.setEndgame(true, self.player);
+        //     numberOfSeconds = 0;
+        //     console.log("tata");
+        //     clearInterval(this.interval);
+        // } else {
+        //     clearInterval(this.interval);
+        //     self.addContentToTimer();
+        //     console.log("toto");
+        //     //console.log(self.scorePlayer);
+        //     //let scoreTest = self.scoreService.getCurrentScore(score);
+        //     //console.log(scoreTest);
+        //     //score = score.getScoreValue();
+        //     self.checkScore(self.player.getScore());
+        //     this.interval = setInterval(self.timer, self.timerDelay);
+        // }
+
+        //////////////////////////////////////////////////////////////
 
         // const timer = window.setInterval(() => {
         // numberOfSeconds--
@@ -117,20 +142,20 @@ class TimerService {
     }
     
     addTimeToTimer(){
-        numberOfSeconds = self.getCurrentTimer();
-        numberOfSeconds += 5;
-        if(numberOfSeconds > 60){
-            numberOfSeconds = 60;
+        self.numberOfSeconds = self.getCurrentTimer();
+        self.numberOfSeconds += 5;
+        if(self.numberOfSeconds > 60){
+            self.numberOfSeconds = 60;
         }
-        self.displayTimer(numberOfSeconds);
+        self.displayTimer(self.numberOfSeconds);
         timerInfo.innerText = "+" + 5;
         setTimeout(self.hideTimerInfo, 1000);
     }
     
     decreaseTimeToTimer(){
-        numberOfSeconds = self.getCurrentTimer();
-        numberOfSeconds -= 5;
-        self.displayTimer(numberOfSeconds);
+        self.numberOfSeconds = self.getCurrentTimer();
+        self.numberOfSeconds -= 5;
+        self.displayTimer(self.numberOfSeconds);
         timerInfo.innerText = "-" + 5;
         setTimeout(self.hideTimerInfo, 1000);
     }

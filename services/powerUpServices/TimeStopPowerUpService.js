@@ -25,12 +25,12 @@ class TimeStopPowerUpService extends PowerUpsService{
     }
 
     addTimeToTimer(){
-        numberOfSeconds = this.timerService.getCurrentTimer();
-        numberOfSeconds += 10;
-        if(numberOfSeconds > 60){
-            numberOfSeconds = 60;
+        this.timerService.numberOfSeconds = this.timerService.getCurrentTimer();
+        this.timerService.numberOfSeconds += 10;
+        if(this.timerService.numberOfSeconds > 60){
+            this.timerService.numberOfSeconds = 60;
         }
-        this.timerService.displayTimer(numberOfSeconds);
+        this.timerService.displayTimer(this.timerService.numberOfSeconds);
         timerInfo.innerText = "+" + 10;
         setTimeout(this.timerService.hideTimerInfo, 1000);
     }
@@ -44,7 +44,6 @@ class TimeStopPowerUpService extends PowerUpsService{
     //     timeStop.timeStopPowerUp.innerHTML = timeStop.getQuantity();
     // }
     setGradient(value) {
-        console.log(value);
         timeStopButton.style.background = 
         "linear-gradient(to top," 
         + "#8ED6FA " + value + "%, " 

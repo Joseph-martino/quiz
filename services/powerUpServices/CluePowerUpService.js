@@ -6,24 +6,12 @@ class CluePowerUpService extends PowerUpsService{
 
     levelService = new LevelService();
     
-    // displayCluePowerUpQuantity(clue){
-    //     clue.cluePowerUp.innerHTML = clue.getQuantity();
-    // }
-
-    // hideInfo(){
-    //     setTimeout(() => powerUpInfo.innerHTML = "", 1000);
-    // }
-
     getCurrentGame(number){
         return games[number];
     }
 
     getCurrentMusic(number){
         return musics[number];
-    }
-
-    test(text){
-        console.log(text);
     }
 
     useCluePower(clue, randomNumber){

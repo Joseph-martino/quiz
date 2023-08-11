@@ -27,11 +27,6 @@ class PlayerService {
     }
 
     getClue(){
-        console.log(this.player);
         return this.player.getClue();
-    }
-
-    test(){
-        console.log(this.player);
     }
 }

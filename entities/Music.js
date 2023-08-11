@@ -1,7 +1,7 @@
-class GamePicture {
+class Music {
 
     title;
-    picture;
+    music;
     clue;
     coins;
 
@@ -13,13 +13,14 @@ class GamePicture {
         this.title = title;
     }
 
-    getPicture(){
-        return this.picture;
+    getMusic(){
+        return this.music;
     }
 
-    setPicture(picture){
-        this.picture = picture;
+    setMusic(music){
+        this.music = music;
     }
+
     geClue(){
         return this.clue;
     }

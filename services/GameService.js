@@ -9,8 +9,11 @@ class GameService {
     cluePowerUpService = new CluePowerUpService();
     playerService = new PlayerService();
     medalService = new MedalService();
+    gamePictureService = new GamePictureService();
+    musicService = new MusicService();
     goodAnswerSound = document.getElementById("good-answer-sound");
     gameMusic = document.getElementById("game-music");
+    picture = document.getElementById("image");
     randomNumber;
     consecutiveAnswers;
     player;
@@ -36,19 +39,21 @@ class GameService {
         return this.randomNumber;
     }
     loadRandomPicture(number) {
-        picture.src = imageFolder + games[number].picture;
+        let game = this.gamePictureService.getByid(number);
+        this.picture.src =  game.getPicture();
     }
 
     showPicture() {
-        picture.style.display = "block";
+        this.picture.style.display = "block";
     }
 
     hidePicture() {
-        picture.style.display = "none";
+        this.picture.style.display = "none";
     }
 
     loadRandomMusic(number) {
-        this.gameMusic.src = musicFolder + musics[number].music;
+        let music = this.musicService.getByid(number);
+        this.gameMusic.src = music.getMusic();
         this.gameMusic.play();
     }
 
@@ -72,7 +77,6 @@ class GameService {
     }
 
     initGame() {
-        // this.player = this.playerService.createPlayer();
         this.consecutiveAnswers = 0;
         userInput.focus();
         this.levelService.initializeLevel();

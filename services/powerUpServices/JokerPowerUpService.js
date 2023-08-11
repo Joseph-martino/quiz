@@ -6,14 +6,6 @@ class JokerPowerUpService extends PowerUpsService {
         super();
     }
 
-    // displayJokerPowerUpQuantity(joker){
-    //     joker.quantityDisplay.innerHTML = joker.getQuantity();
-    // }
-
-    // hideInfo(){
-    //     setTimeout(() => powerUpInfo.innerHTML = "", 1000);
-    // }
-
     removeRedBorders(){
         setTimeout(() => {
             jokerButton.style.border = "none";
@@ -25,7 +17,6 @@ class JokerPowerUpService extends PowerUpsService {
             let currentLevel = this.levelService.getCurrentLevel();
             if(currentLevel %10 === 0){
                 let music = this.getCurrentMusic(randomNumber);
-                console.log(music);
                 userInput.value = music.title;
             } else {
                 let game = this.getCurrentGame(randomNumber);

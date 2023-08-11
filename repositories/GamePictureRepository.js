@@ -6,7 +6,9 @@ class GamePictureRepository {
         gamePicture.setTitle(gameFromArray.title);
         gamePicture.setPicture(imageFolder + gameFromArray.picture);
         gamePicture.setClue(gameFromArray.clue);
-        gamePicture.setCoins(gameFromArray.coins);
+        let randomNumber = 5*(Math.floor(Math.random() * 40));
+        console.log(randomNumber);
+        gamePicture.setCoins(randomNumber);
         return gamePicture;
     }  
 }

@@ -39,5 +39,11 @@ const stickers = [
         name: "Sonic",
         picture: "sonic.png",
         cost: 70
+    },
+
+    {
+        name: "Ness",
+        picture: "ness.png",
+        cost: 70
     }
 ];

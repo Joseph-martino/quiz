@@ -5,11 +5,14 @@ class Player{
     coins;
     powerUps;
     medal;
+    stikers;
+    
 
     constructor(){
         this.score = 0;
         this.coins = 0;
         this.powerUps = [];
+        this.stikers = [];
     }
 
     getName(){
@@ -66,6 +69,18 @@ class Player{
 
     getJoker(){
         return this.powerUps[2];
+    }
+
+    getStickerss(){
+        return this.stikers;
+    }
+
+    setStickers(stikers){
+        this.stikers = stikers;
+    }
+
+    addPowerUp(stikers){
+        this.stikers.push(stikers);
     }
 
 }

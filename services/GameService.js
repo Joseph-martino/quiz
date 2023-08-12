@@ -90,6 +90,7 @@ class GameService {
         this.medalService.getMedal(this.player.getMedal(), this.player.getScore().getScoreValue());
         this.generateRandomNumber(games);
         this.loadRandomPicture(this.randomNumber);
+        console.log(this.player);
     }
 
     launchGame() {
@@ -105,6 +106,7 @@ class GameService {
     }
 
     answerVerification() {
+        console.log(this.player);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;

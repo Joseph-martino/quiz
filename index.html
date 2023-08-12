@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style.css" />
     <script src="entities/Player.js" defer></script>
     <script src="entities/Score.js" defer></script>
     <script src="entities/GamePicture.js" defer></script>
@@ -35,90 +35,149 @@
     <script src="services/TimerService.js" defer></script>
     <script src="services/GameService.js" defer></script>
     <script src="Main.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="title-screen">
-        <h1>Super Quiz</h1>
-        <h2>Règle du jeu</h2>
-        <p>Trouvez simplement le nom du jeu et appuyer sur le bouton A. 
-            Pour passer, appuyez sur le bouton B. Trouvez le maximum de 
-            jeu pour marquer le plus de points possible avant la fin du 
-            temps imparti. Attention, vous devez être précis dans le choix 
-            des noms. Exemple: Mario Bros est différent de Super Mario Bros
-        </p>
-        <button id="start-button">Commencer</button>
+      <h1>Super Quiz</h1>
+      <h2>Règle du jeu</h2>
+      <p>
+        Trouvez simplement le nom du jeu et appuyer sur le bouton A. Pour
+        passer, appuyez sur le bouton B. Trouvez le maximum de jeu pour marquer
+        le plus de points possible avant la fin du temps imparti. Attention,
+        vous devez être précis dans le choix des noms. Exemple: Mario Bros est
+        différent de Super Mario Bros
+      </p>
+
+      <div id="player-infos-container">
+        <div id="player-container">
+          <div class="new-player-name-input-container">
+            <h2>Nouveau joueur</h2>
+            <h4>ENTREZ VOTRE NOM</h4>
+            <p id="error-player-name-info"></p>
+            <input id="player-name-input" type="text" />
+            <button id="player-confirmation-button">OK</button>
+          </div>
+
+          <div class="code-container">
+            <h4>Charger joueur avec un code</h4>
+            <input id="code-player-input" type="text" />
+            <button id="code-confirmation-button">OK</button>
+          </div>
+
+          <div id="stickers-shop">
+            <button id="shop-button">Boutique</button>
+          </div>
+        </div>
+
+        <div id="player-stickers-inventory">
+          <button id="player-stickers-button">Mes stickers</button>
+        </div>
+
+        <div id="player-success-container">
+          <button id="player-success-button">Mes succès</button>
+        </div>
+      </div>
+      <button id="start-button">Commencer</button>
     </div>
 
-
     <div id="game-container">
-        <div class="timer-container">
-            <h2 id="timer"></h2>
-            <h2 id="timer-info"></h2>
-        </div>
-        <div class="score-container">
-            <h2>Score</h2>
-            <h2 id="score"></h2>
-            <h2 id="coins"></h2>
-            <h2 id="medal"></h2>
-            <img id="medal-picture" src="" alt="medal-icon">
-        </div>
-        <h3 id="level"></h3>
-        <div id="power-ups-container">
-            <p id="power-up-info"></p>
-            <button id="time-stop-power-button">
-                <img class="powerup-icon" src="assets/images/icons/hourglass.png" alt="hourglass icon">
-                <span id="time-stop-power"></span>
-            </button>
+      <div class="timer-container">
+        <h2 id="timer"></h2>
+        <h2 id="timer-info"></h2>
+      </div>
+      <div class="score-container">
+        <h2>Score</h2>
+        <h2 id="score"></h2>
+        <h2 id="coins"></h2>
+        <h2 id="medal"></h2>
+        <img id="medal-picture" src="" alt="medal-icon" />
+      </div>
+      <h3 id="level"></h3>
+      <div id="power-ups-container">
+        <p id="power-up-info"></p>
+        <button id="time-stop-power-button">
+          <img
+            class="powerup-icon"
+            src="assets/images/icons/hourglass.png"
+            alt="hourglass icon"
+          />
+          <span id="time-stop-power"></span>
+        </button>
 
-            <button id="joker-power-button">
-                <img class="powerup-icon" src="assets/images/icons/joker.png" alt="joker icon">
-                <span id="joker-power"></span>
-            </button>
+        <button id="joker-power-button">
+          <img
+            class="powerup-icon"
+            src="assets/images/icons/joker.png"
+            alt="joker icon"
+          />
+          <span id="joker-power"></span>
+        </button>
 
-            <button id="clue-power-button">
-                <img class="powerup-icon" src="assets/images/icons/clue.png" alt="clue icon">
-                <span id="clue-power"></span>
-            </button>
+        <button id="clue-power-button">
+          <img
+            class="powerup-icon"
+            src="assets/images/icons/clue.png"
+            alt="clue icon"
+          />
+          <span id="clue-power"></span>
+        </button>
+      </div>
+      <div class="main-container">
+        <div class="picture-container">
+          <img id="image" src="" alt="game-picture" />
+          <audio id="game-music" src=""></audio>
         </div>
-        <div class="main-container">
-            <div class="picture-container">
-                <img id="image" src="" alt="game-picture">
-                <audio id="game-music" src=""></audio>
-            </div>
-    
-            <div class="answer-container">
-                <input id="user-input" type="text">
-                <button id="validation-button">Valider</button>
-                <audio id="good-answer-sound" src="assets/sounds/TunePocket-Power-Up-Retro-Game-Sound-1-Preview.mp3"></audio>
-                <button id="skip-button">Passer</button>
-            </div>
-    
-            <div class="clue-content-container">
-                <p id="clue-content"></p>
-            </div>
+
+        <div class="answer-container">
+          <input id="user-input" type="text" />
+          <button id="validation-button">Valider</button>
+          <audio
+            id="good-answer-sound"
+            src="assets/sounds/TunePocket-Power-Up-Retro-Game-Sound-1-Preview.mp3"
+          ></audio>
+          <button id="skip-button">Passer</button>
         </div>
+
+        <div class="clue-content-container">
+          <p id="clue-content"></p>
+        </div>
+      </div>
     </div>
 
     <div id="game-over-container">
-        <h3 id="game-over">Game Over</h3>
-        <p id="reward-message"></p>
-        <p>Score: <span id="end-game-score"></span></p>
-        <p>Pièce : <span id="end-game-coins"></span></p>
-        <div id="high-score-container">
-            <div id="score1"></div>
-            <div id="score2"></div>
-            <div id="score3"></div>
-            <div id="score4"></div>
-            <div id="score5"></div>
-
-        </div>
-        <div id="player-new-username-container">
+      <h3 id="game-over">Game Over</h3>
+      <p id="reward-message"></p>
+      <p>Score: <span id="end-game-score"></span></p>
+      <p>Pièce : <span id="end-game-coins"></span></p>
+      <div id="high-score-container">
+        <div id="score1"></div>
+        <div id="score2"></div>
+        <div id="score3"></div>
+        <div id="score4"></div>
+        <div id="score5"></div>
+      </div>
+      <!-- <div id="player-new-username-container">
             <h3>NOUVEAU RECORD</h3>
             <p>Entre ton pseudo</p>
             <input id="user-name" type="text">
             <button id="user-confirmation-button">OK</button>
-        </div>
-        <button id="restart-game">Recommencer</button>
+        </div> -->
+      <button id="restart-game">Recommencer</button>
     </div>
-</body>
+
+    <div id="shop-screen">
+        <button id="shop-previous-screen-button">Retour</button>
+        <h2>Boutique de stickers</h2>
+    </div>
+
+    <div id="player-stickers-screen">
+        <button id="player-stickers-screen-previous-button">Retour</button>
+        <h2>Stickers débloqués</h2>
+    </div>
+
+    <div id="player-success-screen">
+        <button id="player-success-screen-previous-button">Retour</button>
+        <h2>Succès</h2>
+    </div>
+  </body>
 </html>

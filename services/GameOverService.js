@@ -21,7 +21,7 @@ class GameOverService {
         this.displayGameOver(this.gameOver);
         this.scoreService.displayFinalScore(player.getScore());
         this.rewardService.getReward(player.getScore());
-        this.displayHighScore(highScore, player.getScore());
+        this.displayHighScore(highScore, player);
         this.rewardService.displayPlayerCoins(player);
     }
     
@@ -48,22 +48,22 @@ class GameOverService {
         }
     }
 
-    checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, score){
+    checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, player){
         this.sortArrayByDescendingOrder(array);
-        if(score.getScoreValue() > array[array.length -1].getScore().getScoreValue()){
+        if(player.getScore().getScoreValue() > array[array.length -1].getScore().getScoreValue()){
             return true;
         } else {
             return false;
         }
     }
 
-    showNewPlayerNameField(){
-        playerNewUsernameBox.style.display = "block";
-    }
+    // showNewPlayerNameField(){
+    //     playerNewUsernameBox.style.display = "block";
+    // }
 
-    hideNewPlayerNameField(){
-        playerNewUsernameBox.style.display = "none";
-    }
+    // hideNewPlayerNameField(){
+    //     playerNewUsernameBox.style.display = "none";
+    // }
 
     displayExistingScores(array){
         for(let i = 0; i < array.length; i++){
@@ -74,10 +74,21 @@ class GameOverService {
         }
     }
 
-    setPlayerName(player){
-        player.setName(userNameInput.value);
+    // setPlayerName(player){
+    //     player.setName(userNameInput.value);
+    //     highScore.push(player);
+    //     this.hideNewPlayerNameField();
+    //     this.sortArrayByDescendingOrder(highScore);
+    //     if(highScore.length >= 5){
+    //         highScore.pop();
+    //     }
+    //     this.displayExistingScores(highScore);
+    // }
+
+    addPlayerToHighScore(player){
+        //player.setName(userNameInput.value);
         highScore.push(player);
-        this.hideNewPlayerNameField();
+        //this.hideNewPlayerNameField();
         this.sortArrayByDescendingOrder(highScore);
         if(highScore.length >= 5){
             highScore.pop();
@@ -85,19 +96,20 @@ class GameOverService {
         this.displayExistingScores(highScore);
     }
 
-    displayHighScore(array, score){
+    displayHighScore(array, player){
         if(array.length >= 5){
             this.sortArrayByDescendingOrder(array);
             this.displayExistingScores(array);
-            let isPlayerScoreUpperThanHightScore = this.checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, score);
+            let isPlayerScoreUpperThanHightScore = this.checkIfPlayerScoreIsGreaterThanScoreInHightScore(array, player);
 
             if(isPlayerScoreUpperThanHightScore){
-                this.showNewPlayerNameField();
+                //this.showNewPlayerNameField();
+                this.addPlayerToHighScore(player)
             }
         }
         else {
             this.sortArrayByDescendingOrder(array);
-            this.showNewPlayerNameField();
+            //this.showNewPlayerNameField();
         }
     }
 }

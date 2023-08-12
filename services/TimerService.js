@@ -65,9 +65,9 @@ class TimerService {
             self.checkScore(self.player.getScore());
             window.interval = setInterval(self.timer, self.timerDelay);
         } if(self.numberOfSeconds <= 0){
+            self.numberOfSeconds = 0;
             console.log("tata");
             self.gameOverService.setEndgame(true, self.player);
-            self.numberOfSeconds = 0;
         }
     }
     

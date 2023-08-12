@@ -4,12 +4,59 @@ let cluePowerUpService = new CluePowerUpService();
 let timeStopPowerUpService = new TimeStopPowerUpService(); 
 let jokerPowerUpService = new JokerPowerUpService(); 
 let playerService = new PlayerService();
+const userInput = document.getElementById("user-input");
+const validationbutton = document.getElementById("validation-button");
+const skipButton = document.getElementById("skip-button");
+const restartButton = document.getElementById("restart-game");
+const startButton = document.getElementById("start-button");
+const userNameInput = document.getElementById("user-name");
+const userConfirmationButton = document.getElementById("user-confirmation-button");
+const playerNameInput = document.getElementById("player-name-input");
+const playerNameConfirmationButton = document.getElementById("player-confirmation-button");
+const titleScreen = document.getElementById("title-screen");
+const shopButton = document.getElementById("shop-button");
+const shopScreen = document.getElementById("shop-screen");
+const playerStickersButton = document.getElementById("player-stickers-button");
+const playerStickersScreen = document.getElementById("player-stickers-screen");
+const playerSuccessButton = document.getElementById("player-success-button");
+const playerSuccessScreen = document.getElementById("player-success-screen");
+const shopPreviousButton = document.getElementById("shop-previous-screen-button");
+const playerStickersPreviousButton = document.getElementById("player-stickers-screen-previous-button");
+const playerSuccessPreviousButton = document.getElementById("player-success-screen-previous-button");
 
+playerNameConfirmationButton.addEventListener('click', function(){
+    gameService.setPlayerName(gameService.getPlayer());
+},false);
 
-StartButton.addEventListener('click', function(){
+startButton.disabled = true;
+
+startButton.addEventListener('click', function(){
     gameService.launchGame();
 });
 
+shopButton.addEventListener('click', function(){
+    gameService.showShopScreen();
+});
+
+playerStickersButton.addEventListener('click', function(){
+    gameService.showPlayerStickerScreen();
+});
+
+playerSuccessButton.addEventListener('click', function(){
+    gameService.showPlayerSuccessScreen();
+});
+
+shopPreviousButton.addEventListener('click', function(){
+    gameService.backToTitle();
+});
+
+playerStickersPreviousButton.addEventListener('click', function(){
+    gameService.backToTitle();
+});
+
+playerSuccessPreviousButton.addEventListener('click', function(){
+    gameService.backToTitle();
+});
 
 validationbutton.addEventListener('click', function(){
     gameService.checkUserAnswer();
@@ -31,9 +78,9 @@ restartButton.addEventListener('click', function(){
     gameService.reloadGame();
 });
 
-userConfirmationButton.addEventListener('click', function(){
-    gameOverService.setPlayerName(gameService.getPlayer());
-},false);
+// userConfirmationButton.addEventListener('click', function(){
+//     gameOverService.setPlayerName(gameService.getPlayer());
+// },false);
 
 timeStopButton.addEventListener('click', function(){
     timeStopPowerUpService.useTimeStop(gameService.getTimeStop());

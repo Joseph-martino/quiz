@@ -17,7 +17,7 @@ score3.setScoreValue(70);
 player3.setScore(score3);
 
 let player4 = new Player();
-player4.setName("Tazeomonke");
+player4.setName("Tazeomon");
 score4 = new Score();
 score4.setScoreValue(40);
 player4.setScore(score4);

@@ -1,3 +1,7 @@
+.player-name-input-container {
+    display: flex;
+}
+
 #image {
     width: 40%;
     height: auto;
@@ -20,6 +24,18 @@
     display: none;
 }
 
+#shop-screen {
+    display: none;
+}
+
+#player-stickers-screen {
+    display: none;
+}
+
+#player-success-screen {
+    display: none;
+}
+
 #player-new-username-container{
     display: none;
 }
@@ -34,22 +50,12 @@
 
 #time-stop-power-button {
     background: linear-gradient(
-        
-    /*Début*/
     to top, 
     #8ED6FA 0%, 
     #8ED6FA 0%, 
     #a6a6a6 0%, 
     #a6a6a6 100%
-    
-    /*fin
-    to top, 
-    #8ED6FA 0%, 
-    #8ED6FA 100%, 
-    #a6a6a6 100%, 
-    #a6a6a6 100%
-    */
-  );
+    );
 }
 
 

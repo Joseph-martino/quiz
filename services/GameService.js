@@ -14,6 +14,7 @@ class GameService {
     goodAnswerSound = document.getElementById("good-answer-sound");
     gameMusic = document.getElementById("game-music");
     picture = document.getElementById("image");
+    errorPlayerNameInfo = document.getElementById("error-player-name-info");
     randomNumber;
     consecutiveAnswers;
     player;
@@ -25,6 +26,42 @@ class GameService {
     constructor(){
         self = this;
         this.player = this.playerService.createPlayer();
+    }
+
+    setPlayerName(player){
+        if(playerNameInput.value != " " && !playerNameInput != undefined){
+            player.setName(playerNameInput.value);
+            this.hideErrorPlayerName();
+            startButton.disabled = false;
+        } else {
+            this.errorPlayerNameInfo.innerHTML = "Renseignez un nom valide";
+        }
+    }
+
+    hideErrorPlayerName() {
+        this.errorPlayerNameInfo.style.display = "none";
+    }
+
+    showShopScreen(){
+        titleScreen.style.display = "none";
+        shopScreen.style.display = "block";
+    }
+
+    showPlayerStickerScreen(){
+        titleScreen.style.display = "none";
+        playerStickersScreen.style.display = "block";
+    }
+
+    showPlayerSuccessScreen(){
+        titleScreen.style.display = "none";
+        playerSuccessScreen.style.display = "block";
+    }
+
+    backToTitle(){
+        titleScreen.style.display = "block";
+        shopScreen.style.display = "none";
+        playerStickersScreen.style.display = "none";
+        playerSuccessScreen.style.display = "none";
     }
 
     reloadGame() {
@@ -93,7 +130,7 @@ class GameService {
     }
 
     launchGame() {
-        tileScreen.style.display = "none";
+        titleScreen.style.display = "none";
         gameView.style.display = "block";
         this.initGame();
     }
@@ -105,6 +142,7 @@ class GameService {
     }
 
     answerVerification() {
+        console.log(this.player);
         this.goodAnswerSound.play();
         this.gameMusic.src = "";
         this.consecutiveAnswers++;

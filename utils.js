@@ -1,6 +1,7 @@
 const imageFolder = "assets/images/";
 const iconFolder = "icons/";
 const musicFolder = "assets/sounds/musics/";
+const stickersFolder = "assets/images/stickers/";
 const timerDisplay = document.getElementById("timer");
 const timerInfo = document.getElementById("timer-info");
 const gameView = document.getElementById("game-container");

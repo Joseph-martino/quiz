@@ -11,6 +11,7 @@ class GameService {
     medalService = new MedalService();
     gamePictureService = new GamePictureService();
     musicService = new MusicService();
+    stickersShopService = new StickersShopService();
     goodAnswerSound = document.getElementById("good-answer-sound");
     gameMusic = document.getElementById("game-music");
     picture = document.getElementById("image");
@@ -45,6 +46,32 @@ class GameService {
     showShopScreen(){
         titleScreen.style.display = "none";
         shopScreen.style.display = "block";
+        this.displayStickersList();
+    }
+
+    displayStickersList(){
+        let stickers = this.stickersShopService.getStickers();
+        for(let i = 0; i < stickers.length; i++){
+            const div = document.createElement("div");
+            div.classList.add("shop-sticker-container");
+            const h3 = document.createElement("h3");
+            const h3Content = document.createTextNode(stickers[i].getName());
+            h3.appendChild(h3Content);
+            const img = document.createElement("img");
+            img.src = stickers[i].getPicture();
+            img.classList.add("shop-sticker");
+            const p = document.createElement("p");
+            const pContent = document.createTextNode(stickers[i].getCost());
+            const button = document.createElement("button");
+            button.innerText = "Acheter";
+            p.appendChild(pContent);
+            div.appendChild(h3);
+            div.appendChild(img);
+            div.appendChild(p);
+            div.appendChild(button);
+            shopContent.append(div);
+        }
+        
     }
 
     showPlayerStickerScreen(){

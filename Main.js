@@ -16,6 +16,7 @@ const playerNameConfirmationButton = document.getElementById("player-confirmatio
 const titleScreen = document.getElementById("title-screen");
 const shopButton = document.getElementById("shop-button");
 const shopScreen = document.getElementById("shop-screen");
+const shopContent = document.getElementById("shop-content");
 const playerStickersButton = document.getElementById("player-stickers-button");
 const playerStickersScreen = document.getElementById("player-stickers-screen");
 const playerSuccessButton = document.getElementById("player-success-button");

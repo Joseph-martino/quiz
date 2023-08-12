@@ -28,6 +28,23 @@
     display: none;
 }
 
+#shop-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.shop-sticker-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-sticker {
+    width: 20%;
+    height: auto;
+}
+
 #player-stickers-screen {
     display: none;
 }

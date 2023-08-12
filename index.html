@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="style/style.css" />
     <script src="entities/Player.js" defer></script>
     <script src="entities/Score.js" defer></script>
+    <script src="entities/Shop.js" defer></script>
+    <script src="entities/Sticker.js" defer></script>
     <script src="entities/GamePicture.js" defer></script>
     <script src="entities/Music.js" defer></script>
+    <script src="data/stickers.js" defer></script>
+    <script src="repositories/StickersShopRepository.js" defer></script>
     <script src="repositories/GamePictureRepository.js" defer></script>
     <script src="repositories/MusicRepository.js" defer></script>
     <script src="data/data.js" defer></script>
@@ -24,6 +28,7 @@
     <script src="services/MusicService.js" defer></script>
     <script src="services/LevelService.js" defer></script>
     <script src="services/PlayerService.js" defer></script>
+    <script src="services/StickersShopService.js" defer></script>
     <script src="services/powerUpServices/PowerUpsService.js" defer></script>
     <script src="services/powerUpServices/TimeStopPowerUpService.js" defer></script>
     <script src="services/powerUpServices/JokerPowerUpService.js" defer></script>
@@ -168,6 +173,7 @@
     <div id="shop-screen">
         <button id="shop-previous-screen-button">Retour</button>
         <h2>Boutique de stickers</h2>
+        <div id="shop-content"></div>
     </div>
 
     <div id="player-stickers-screen">

@@ -18,6 +18,7 @@ class GameService {
     errorPlayerNameInfo = document.getElementById("error-player-name-info");
     randomNumber;
     consecutiveAnswers;
+    stickers;
     player;
     clue;
     joker;
@@ -26,7 +27,9 @@ class GameService {
 
     constructor(){
         self = this;
+        console.log(self);
         this.player = this.playerService.createPlayer();
+        this.stickers = this.stickersShopService.getStickers();
     }
 
     setPlayerName(player){
@@ -50,33 +53,84 @@ class GameService {
     }
 
     displayStickersList(){
-        let stickers = this.stickersShopService.getStickers();
-        for(let i = 0; i < stickers.length; i++){
+        
+        for(let i = 0; i < this.stickers.length; i++){
             const div = document.createElement("div");
             div.classList.add("shop-sticker-container");
             const h3 = document.createElement("h3");
-            const h3Content = document.createTextNode(stickers[i].getName());
+            const h3Content = document.createTextNode(this.stickers[i].getName());
             h3.appendChild(h3Content);
             const img = document.createElement("img");
-            img.src = stickers[i].getPicture();
+            img.src = this.stickers[i].getPicture();
             img.classList.add("shop-sticker");
             const p = document.createElement("p");
-            const pContent = document.createTextNode(stickers[i].getCost());
+            const pContent = document.createTextNode(this.stickers[i].getCost());
+            const input = document.createElement("input");
+            input.setAttribute("type","hidden");
+            input.value = this.stickers[i].id;
+            input.setAttribute("class", "hidden-input");
+            input.setAttribute("id", this.stickers[i].id);
             const button = document.createElement("button");
             button.innerText = "Acheter";
+            button.addEventListener('click', this.buySticker);
             p.appendChild(pContent);
             div.appendChild(h3);
             div.appendChild(img);
             div.appendChild(p);
+            div.appendChild(input);
             div.appendChild(button);
             shopContent.append(div);
         }
-        
     }
+
+    getStickerById(id){
+        this.stickersShopService.getStickerById(id);
+    }
+
+    // buySticker(){
+    //     //console.log("test");
+    //     console.log(this);
+    //     console.log(self);
+    //     //let id = document.getElementById()
+    //     let sticker = this.getStickerById(1);
+    //     if(this.player.getCoins() > sticker.getCost()){
+    //         this.player.setCoins(this.player.getCoins() - sticker.getCost());
+    //         this.player.addSticker(sticker);
+    //     } else {
+    //         console.log("pas assez de pièces");
+    //     }
+    // }
 
     showPlayerStickerScreen(){
         titleScreen.style.display = "none";
         playerStickersScreen.style.display = "block";
+        this.displayPlayerStickers();
+    }
+
+    displayPlayerStickers(){
+        for(let i = 0; i < this.player.getStickers().length; i++){
+            const div = document.createElement("div");
+            div.classList.add("player-sticker-container");
+            const h3 = document.createElement("h3");
+            const h3Content = document.createTextNode(this.player.getStickers()[i].getName());
+            h3.appendChild(h3Content);
+            const img = document.createElement("img");
+            img.src = this.stickers[i].getPicture();
+            img.classList.add("shop-sticker");
+            const p = document.createElement("p");
+            const pContent = document.createTextNode(this.player.getStickers()[i].getCost());
+            const input = document.createElement("input");
+            input.setAttribute("type","hidden");
+            input.value = this.player.getStickers()[i].id;
+            input.setAttribute("class", "hidden-input");
+            input.setAttribute("id", this.player.getStickers()[i].id);
+            p.appendChild(pContent);
+            div.appendChild(h3);
+            div.appendChild(img);
+            div.appendChild(p);
+            div.appendChild(input);
+            playerStickersContent.append(div);
+        }
     }
 
     showPlayerSuccessScreen(){
@@ -141,6 +195,7 @@ class GameService {
     }
 
     initGame() {
+        console.log(this.player);
         this.consecutiveAnswers = 0;
         userInput.focus();
         this.levelService.initializeLevel();

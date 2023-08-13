@@ -1,8 +1,18 @@
 class Sticker {
 
+    id;
     name;
     picture;
     cost;
+
+
+    getId(){
+        return this.id;
+    }
+
+    setId(id){
+        this.id = id;
+    }
 
     getName(){
         return this.name;

@@ -19,6 +19,7 @@ const shopScreen = document.getElementById("shop-screen");
 const shopContent = document.getElementById("shop-content");
 const playerStickersButton = document.getElementById("player-stickers-button");
 const playerStickersScreen = document.getElementById("player-stickers-screen");
+const playerStickersContent = document.getElementById("player-stickers-content");
 const playerSuccessButton = document.getElementById("player-success-button");
 const playerSuccessScreen = document.getElementById("player-success-screen");
 const shopPreviousButton = document.getElementById("shop-previous-screen-button");
